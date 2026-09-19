@@ -83,12 +83,14 @@
 
 *{box-sizing:border-box}
 .brand{display:flex;align-items:center;gap:14px}
-.logo2{width:50px;height:50px;border-radius:12px;background:#fff;color:var(--primary);display:grid;place-items:center;font-weight:800;font-size:20px}
-.brand h5{margin:0;font-size:21px;background:#257c92;}.brand p{margin:3px 0 0;font-size:12px;opacity:.85}
+.brand h5{margin:0;font-size:clamp(20px, 4vw, 45px);background:#4f8d9c;text-align: center;
+    width: 100%;
+    box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+.brand p{margin:3px 0 0;font-size:15px;opacity:.85}
 .admin{font-size:13px;background:rgba(255,255,255,.14);padding:9px 13px;border-radius:20px}
-nav{background:#fff;border-bottom:1px solid var(--border)}
-.nav-inner{max-width:1250px;margin:auto;display:flex;gap:6px;overflow:auto}
-.nav-btn{border:0;background:transparent;padding:14px 17px;cursor:pointer;font-weight:700;color:#475569}
+nav{background:#acacac;border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1500px;margin:auto;display:flex;gap:6px;overflow:auto}
+.nav-btn{border:0;background:transparent;padding:14px 17px;cursor:pointer;font-weight:700;color:#000000}
 .nav-btn.active,.nav-btn:hover{color:var(--primary);border-bottom:3px solid var(--primary)}
 main{max-width:1250px;margin:28px auto;padding:0 18px}
 .page{display:none}.page.active{display:block}
@@ -149,9 +151,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:30px}
   <div class="nav-inner">
     <button class="nav-btn active" onclick="showPage('dashboard',this)">Dashboard</button>
     <button class="nav-btn" onclick="showPage('submit',this)">Submit Report</button>
-    <button class="nav-btn" onclick="showPage('records',this)">My Submissions</button>
-    <button class="nav-btn" onclick="showPage('monitoring',this)">Monitoring</button>
-    <button class="nav-btn" onclick="showPage('reports',this)">Reports</button>
+
   </div>
 </nav>
 
@@ -159,37 +159,52 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:30px}
 <section id="dashboard" class="page active">
   <div class="page-title">
     <h2>School Reports Dashboard</h2>
-    <p>Monitor the status of school reports and compliance requirements.</p>
   </div>
 
 
 <div class="grid">
     <div class="card">
-      <div class="section-title"><h3>Recent Submissions</h3>
-        <button class="btn btn-light" onclick="showPage('records',document.querySelectorAll('.nav-btn')[2])">View All</button></div>
+      <div class="section-title"><h3>Recent Submissions</h3></div>
       <table>
         <thead>
             <tr><th>Report</th><th># of Compliant</th><th>Due Date</th><th>Status</th></tr></thead>
         <tbody id="recentTable">
-          <tr><td>Monthly Attendance Report</td><td>"-"</td><td>-</td><td><span class="badge submitted">Pending</span></td><td><button class="btn btn-light" onclick="showPage('records2',document.querySelectorAll('.nav-btn')[2])">View All</button></td></tr>
-          <tr><td>School M&E Report</td><td>-</td><td>-</td><td><span class="badge pending">Pending</span></td></tr>
+          <tr><td>Monthly Attendance Report</td><td>"-"</td><td>Every End of the Month</td><td><span class="badge submitted">Submitted</span></td><td><a href="https://depedph-my.sharepoint.com/:x:/g/personal/170532csses_deped_gov_ph/IQAxf_nXyCw8QLre8KMu8t70ATZFsrvwwL_-pUHoB6WyLNg?e=QpL8E1"
+   class="btn btn-light"
+   target="_blank"
+   onclick="return verifyCode();">
+   View
+</a></td></tr>
+          <tr><td>Weekly Daily Lesson Log / Lesson Plan</td><td>-</td><td>Every Friday</td><td><span class="badge pending">Pending</span></td><td><a href="https://depedph-my.sharepoint.com/:x:/g/personal/170532csses_deped_gov_ph/IQCJFq5-Xm78RbEKX3rPxnweAbnu0K9rxIvEVd1CgqVXFR8?e=0X7bAn"
+   class="btn btn-light"
+   target="_blank"
+   onclick="return verifyCode();">
+   View
+</a></td></tr>
           <tr><td>Inventory Report</td><td>-</td><td>-</td><td><span class="badge verified">Pending</span></td></tr>
-          <tr><td>Term 1 Competency Assessment Report</td><td>-</td><td>-</td><td><span class="badge verified">Pending</span></td></tr>
+          <tr><td>Term 1 Competency Assessment Report</td><td>-</td><td>-</td><td><span class="badge submitted">Submitted</span></td></tr>
 
         </tbody>
       </table>
     </div>
 
-    <div class="card">
-      <div class="section-title"><h3>Compliance</h3></div>
-      <p style="font-size:13px;color:#64748b">Overall submission completion</p>
-      <div class="progress"><div style="width:75%"></div></div>
-      <h2 style="margin-bottom:4px">%</h2>
-      <p style="font-size:13px;color:#64748b">- of - reports completed</p>
-      <div class="alert">⚠️ - reports require attention.</div>
-    </div>
+ 
 </div>
 </section>
+
+<script>
+function verifyCode() {
+    const correctCode = "123456"; // Change this to your desired code
+    const enteredCode = prompt("Enter access code:");
+
+    if (enteredCode === correctCode) {
+        return true;  // Continue to the SharePoint link
+    } else {
+        alert("Incorrect access code.");
+        return false; // Stop the link from opening
+    }
+}
+</script>
 
 <section id="submit" class="page">
   <!-- Submit Report page intentionally contains no Recent Submissions panel. -->
@@ -198,26 +213,36 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:30px}
     <form id="reportForm">
       <div class="report-list"> 
         <div class="report-item"> 
+            <div><strong>Weekly Daily Lesson Log / Lesson Plan</strong>
+                <small>Weekly submission</small> 
+            </div> 
+            <a href="https://depedph-my.sharepoint.com/:f:/g/personal/170532csses_deped_gov_ph/IgCebHBaNyTMS6Bn_s7Ow2L8AUbVR7xCxHAWx6FLXKpPgEk?e=HYWKxr" 
+            class="submit-btn"  class="btn btn-light"
+   target="_blank"
+   onclick="return verifyCode();"> Submit </a> 
+        </div> 
+        <div class="report-item"> 
+            <div><strong>Monthly Attendance Report</strong>
+                <small>Monitoring</small> 
+            </div> 
+            <a href="https://depedph-my.sharepoint.com/:x:/g/personal/170532csses_deped_gov_ph/IQAxf_nXyCw8QLre8KMu8t70ATZFsrvwwL_-pUHoB6WyLNg?e=QpL8E1" 
+            class="submit-btn"  class="btn btn-light"
+   target="_blank"
+   onclick="return verifyCode();"> Submit </a> 
+        </div>
+
+
+        <div class="report-item"> 
             <div><strong>Term 1 Competency Assessment Report(2026-2027)</strong>
                 <small>Monitoring and Evaluation</small> 
             </div> 
             <a href="https://depedph-my.sharepoint.com/:x:/g/personal/170532csses_deped_gov_ph/IQBXsHv6xgA0QI19B6gHmmY1AZy-9AhACOVSAMIk6vd-G1s?e=fpdWIG" 
-            class="submit-btn"> Submit </a> 
+            class="submit-btn"  class="btn btn-light"
+   target="_blank"
+   onclick="return verifyCode();"> Submit </a> 
         </div> 
-        <div class="report-item"> 
-            <div><strong>Weekly Daily Lesson Log / Lesson Plan</strong>
-                <small>Monthly submission</small> 
-            </div> 
-            <a href="under_maintenance.html" 
-            class="submit-btn"> Submit </a> 
-        </div> 
-        <div class="report-item"> 
-            <div><strong>School M&E Report</strong>
-                <small>Monitoring and Evaluation</small> 
-            </div> 
-            <a href="under_maintenance.html" 
-            class="submit-btn"> Submit </a> 
-        </div> 
+
+ 
         <div class="report-item"> 
             <div><strong>Inventory Report</strong> 
                 <small>School supplies and property</small> 
@@ -281,58 +306,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:30px}
   </div>
 </section>
 
-<section id="records" class="page">
-  <div class="page-title"><h2>My Submissions</h2><p>View, search and monitor submitted school reports.</p></div>
-  <div class="card">
-    <div class="searchbar"><input id="search" placeholder="Search report name or status..." oninput="filterRecords()"><button class="btn btn-primary" onclick="showPage('submit',document.querySelectorAll('.nav-btn')[1])">+ New Submission</button></div>
-    <table>
-      <thead><tr><th>Reference No.</th><th>Report</th><th>Period</th><th>Date Submitted</th><th>Status</th><th>Action</th></tr></thead>
-      <tbody id="recordsTable">
-        <tr><td>-</td><td>Monthly Attendance Report</td><td>-</td><td>-</td><td><span class="badge submitted">-</span></td><td><button class="btn btn-light" onclick="viewRecord('SRF-2026-001')">View</button></td></tr>
-        <tr><td>SRF-2026-002</td><td>Inventory Report</td><td>July 2026</td><td>Aug. 5, 2026</td><td><span class="badge verified">Verified</span></td><td><button class="btn btn-light" onclick="viewRecord('SRF-2026-002')">View</button></td></tr>
-        <tr><td>SRF-2026-003</td><td>School M&E Report</td><td>July 2026</td><td>Aug. 7, 2026</td><td><span class="badge returned">Returned</span></td><td><button class="btn btn-light" onclick="viewRecord('SRF-2026-003')">View</button></td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
 
-
-
-
-<section id="monitoring" class="page">
-  <div class="page-title"><h2>Monitoring & Compliance</h2><p>Track required reports and mark monitoring requirements.</p></div>
-  <div class="monitor-grid">
-    <div class="card monitor-card"><h4>📊 Monthly Reports</h4><p>Regular monthly school reports.</p>
-      <div class="check">Attendance <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label></div>
-      <div class="check">Accomplishment <label class="toggle"><input type="checkbox"><span class="slider"></span></label></div>
-      <div class="check">M&E <label class="toggle"><input type="checkbox"><span class="slider"></span></label></div>
-    </div>
-    <div class="card monitor-card"><h4>📦 Resource Monitoring</h4><p>Monitor supplies and school property.</p>
-      <div class="check">Inventory <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label></div>
-      <div class="check">Clinic Supplies <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label></div>
-      <div class="check">Textbooks <label class="toggle"><input type="checkbox"><span class="slider"></span></label></div>
-    </div>
-    <div class="card monitor-card"><h4>🏫 School Programs</h4><p>Monitor implementation documents.</p>
-      <div class="check">School Programs <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label></div>
-      <div class="check">Learner Activities <label class="toggle"><input type="checkbox"><span class="slider"></span></label></div>
-      <div class="check">PPAs <label class="toggle"><input type="checkbox"><span class="slider"></span></label></div>
-    </div>
-  </div>
-</section>
-
-<section id="reports" class="page">
-  <div class="page-title"><h2>Reports & Summary</h2><p>Generate a quick summary of report submission status.</p></div>
-  <div class="card">
-    <div class="section-title"><h3>Submission Summary</h3><button class="btn btn-primary" onclick="window.print()">🖨 Print / Save PDF</button></div>
-    <table>
-      <tr><th>Category</th><th>Total</th><th>Completed</th><th>Pending</th><th>Completion Rate</th></tr>
-      <tr><td>Monthly Reports</td><td>-</td><td>-</td><td>-</td><td>-%</td></tr>
-      <tr><td>Resource Monitoring</td><td>-</td><td>-</td><td>-</td><td>-%</td></tr>
-      <tr><td>School Programs</td><td>-</td><td>-</td><td>-</td><td>-%</td></tr>
-      <tr><th>Overall</th><th>-</th><th>-</th><th>-</th><th>-%</th></tr>
-    </table>
-  </div>
-</section>
 </main>
 
 

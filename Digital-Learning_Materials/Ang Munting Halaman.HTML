@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ang Munting Halaman - Grade 1 </title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Arial", sans-serif;
+    background: linear-gradient(135deg, #e8f8e8, #fffbea);
+    color: #234;
+    line-height: 1.6;
+  }
+  .container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+  }
+  .card {
+    background: white;
+    border-radius: 22px;
+    padding: 28px;
+    margin-bottom: 22px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.10);
+  }
+  h1 {
+    text-align: center;
+    color: #287a3e;
+    font-size: 2.2rem;
+    margin-top: 0;
+  }
+  h2 {
+    color: #287a3e;
+    border-bottom: 3px solid #b7dfb7;
+    padding-bottom: 8px;
+  
+  }
+  h3 {
+    color: #000000;
+    border-bottom: 3px solid #b7dfb7;
+    padding-bottom: 8px;
+    text-align: center;
+    font-size: 1.18rem;
+  }
+  .story {
+    font-size: 1.18rem;
+  }
+  .lesson {
+    background: #fff4b8;
+    border-left: 7px solid #e2b400;
+    padding: 15px 18px;
+    border-radius: 12px;
+    font-size: 1.08rem;
+  }
+  .question {
+    margin: 22px 0;
+    padding: 18px;
+    background: #f7fbf7;
+    border-radius: 14px;
+    border: 1px solid #dcebdc;
+  }
+  .question p {
+    font-weight: bold;
+    font-size: 1.08rem;
+    margin-top: 0;
+  }
+  label {
+    display: block;
+    padding: 9px 12px;
+    margin: 7px 0;
+    border-radius: 9px;
+    cursor: pointer;
+    background: white;
+    border: 1px solid #d8e5d8;
+  }
+  label:hover { background: #eef9ee; }
+  button {
+    display: block;
+    margin: 25px auto 10px;
+    padding: 13px 28px;
+    border: 0;
+    border-radius: 12px;
+    background: #2f8f46;
+    color: white;
+    font-size: 1.05rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  button:hover { background: #246f36; }
+  #result {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 18px;
+  }
+  .correct { background: #dff5df !important; border-color: #7ac77a !important; }
+  .wrong { background: #ffe2e2 !important; border-color: #e58b8b !important; }
+  .emoji { font-size: 2rem; }
+  @media (max-width: 600px) {
+    .container { margin: 10px auto; padding: 10px; }
+    .card { padding: 20px; }
+    h1 { font-size: 1.7rem; }
+    .story { font-size: 1.05rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="card">
+    <h1>🌱 Ang Munting Halaman <br></h1>
+    <h3>ni: Ermagay B. Daganta</h3>
+
+    <div class="story">
+      <p>Si <strong>Lito</strong> ay may maliit na halaman sa kanilang bakuran.
+      Araw-araw niya itong dinidiligan.</p>
+
+      <p>Isang araw, nakalimutan ni Lito na diligan ang halaman.
+      Kinabukasan, nakita niyang nalanta ang mga dahon nito.</p>
+
+      <p>“Pasensya ka na, halaman,” sabi ni Lito.</p>
+
+      <p>Mula noon, hindi na niya nakakalimutang alagaan at diligan ang kanyang halaman.
+      Makalipas ang ilang araw, muli itong sumigla at nagkaroon ng magagandang bulaklak.</p>
+    </div>
+
+    <div class="lesson">
+      <strong>🌼 Aral:</strong> Alagaan natin ang mga halaman at maging responsable sa ating mga gawain.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>📝 Mga Tanong</h2>
+    <form id="quiz">
+
+      <div class="question">
+        <p>1. Sino ang may maliit na halaman?</p>
+        <label><input type="radio" name="q1" value="A"> A. Ana</label>
+        <label><input type="radio" name="q1" value="B"> B. Lito</label>
+        <label><input type="radio" name="q1" value="C"> C. Ben</label>
+      </div>
+
+      <div class="question">
+        <p>2. Saan nakalagay ang halaman?</p>
+        <label><input type="radio" name="q2" value="A"> A. Sa silid-aralan</label>
+        <label><input type="radio" name="q2" value="B"> B. Sa kusina</label>
+        <label><input type="radio" name="q2" value="C"> C. Sa bakuran</label>
+      </div>
+
+      <div class="question">
+        <p>3. Ano ang ginagawa ni Lito sa halaman?</p>
+        <label><input type="radio" name="q3" value="A"> A. Dinidiligan niya ito.</label>
+        <label><input type="radio" name="q3" value="B"> B. Tinatapakan niya ito.</label>
+        <label><input type="radio" name="q3" value="C"> C. Pinuputol niya ito.</label>
+      </div>
+
+      <div class="question">
+        <p>4. Bakit nalanta ang mga dahon ng halaman?</p>
+        <label><input type="radio" name="q4" value="A"> A. Dahil umulan.</label>
+        <label><input type="radio" name="q4" value="B"> B. Dahil nakalimutan itong diligan ni Lito.</label>
+        <label><input type="radio" name="q4" value="C"> C. Dahil maraming bulaklak.</label>
+      </div>
+
+      <div class="question">
+        <p>5. Ano ang natutuhan ni Lito?</p>
+        <label><input type="radio" name="q5" value="A"> A. Maging responsable sa pag-aalaga ng halaman.</label>
+        <label><input type="radio" name="q5" value="B"> B. Huwag mag-alaga ng halaman.</label>
+        <label><input type="radio" name="q5" value="C"> C. Itapon ang mga halaman.</label>
+      </div>
+
+      <button type="button" onclick="checkAnswers()">Tingnan ang Iskor</button>
+      <div id="result"></div>
+    </form>
+  </div>
+</div>
+
+<script>
+function checkAnswers() {
+  const answers = {q1:"B", q2:"C", q3:"A", q4:"B", q5:"A"};
+  let score = 0;
+
+  document.querySelectorAll("label").forEach(label => {
+    label.classList.remove("correct", "wrong");
+  });
+
+  for (const q in answers) {
+    const selected = document.querySelector(`input[name="${q}"]:checked`);
+    if (selected) {
+      const label = selected.closest("label");
+      if (selected.value === answers[q]) {
+        score++;
+        label.classList.add("correct");
+      } else {
+        label.classList.add("wrong");
+      }
+    }
+  }
+
+  const result = document.getElementById("result");
+  result.textContent = `🌟 Iyong Iskor: ${score} / 5`;
+
+  if (score === 5) {
+    result.textContent += " — Napakahusay! 🎉";
+  } else if (score >= 3) {
+    result.textContent += " — Magaling! 😊";
+  } else {
+    result.textContent += " — Subukan muli! 💪";
+  }
+}
+</script>
+</body>
+</html>
