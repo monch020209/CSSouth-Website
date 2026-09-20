@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ang Tatay Kong Aswang - Kuwento at Pagsusuri</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --correct-color: #2ecc71;
+            --wrong-color: #e74c3c;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            background-color: var(--bg-color);
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h1, h2 {
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        h1 {
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .story-section {
+            background-color: #fcfcfc;
+            border-left: 4px solid var(--secondary-color);
+            padding: 20px;
+            margin-bottom: 40px;
+            border-radius: 0 8px 8px 0;
+            white-space: pre-line; /* Pinapanatili ang ayos ng taludtod/linya */
+            font-size: 1.05rem;
+        }
+
+        .quiz-section {
+            margin-top: 30px;
+        }
+
+        .question-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .question-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--primary-color);
+        }
+
+        .options-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .options-list li {
+            margin-bottom: 10px;
+        }
+
+        .options-list label {
+            display: block;
+            padding: 10px 15px;
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .options-list label:hover {
+            background: #e9ecef;
+        }
+
+        .options-list input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        button.btn-submit {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        button.btn-submit:hover {
+            background-color: #2980b9;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 8px;
+            display: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Ang Tatay Kong Aswang</h1>
+    <h3>ni: Lucilla M. Daganta</h3>
+
+    <!-- Story Section -->
+    <div class="story-section">
+Sa Baryo Dimakita kung saan ang amoy ng kape ay normal na sa umaga, at tilaok nang manok ang gumigising sa tuwituwina. Kami ni Nanay ay lagging pinag uusapan at ang pagdating ni tatay lagging inaabangan.
+
+Sa lahat ng Tatay kasi sa Baryo Dimakita ang Tatay ko ata ang pinaka kakaiba. Palagi kasing mukha at dibdib lang niya ang aking nakikita. Minsan mukha, minsan kamay minsan bibig minsan bisig. Ngunit kahit na anong bahagi, sa akin ay sapat na bastat malambing niyang boses akin lang madinig.
+
+Ngunit Isang araw, bigla akong kinabahan ng kami at ng kaklase kong Chihay biglang may napag usapan. May mga nilalang pala na ang tawag ay aswang. Pero mas nanginig ako nang malamang may aswang pala na kalahati ang katawan.
+
+Mananangal daw ang tawag sa kanila. Paanoy natatangal daw Ang itaas na katawan sa kanilang mga papa. Ilang araw ko na itong iniisip at gusto ko ding mag tanong, Bakit ng aba ang Tatay ko laging gabi pag tumawag at di ko pa nakita ang paa.
+
+Kung sana ay nakita ko lang siya, bata palang daw kasi umalis siya papuntang ibang bansa. Limang taon na din daw nang huli namin siyang nakapiling, Hi sana sa higaan ako ngayon pa biling biling.
+
+Baka pinaalis Siya dito sa baryo dahil sa pagiging aswang? Baka ayaw niya kami ni mama kainin kaya ang Tatay ko ay umalis nalang? Naaawa tuloy ako sa Tatay ko na lagi sigurong mag Isa. Nagpipilit mabuhay kahit malayo sa kanyang pamilya. Baka nagugutom na iyon! Siguradong hindi Siya kakain Ng tao… Sa boses palang ni Tatay ko baka siya Ang mananangal na na mahilig sa mga isda at repolyo.
+
+Kung mapagdidikit lang sana namin ni Nanay ang kanyang katawan at paa baka pumayag na ang mga kapitbahay naming bumalik Siya sa aming bayan.
+
+Kinabukasan Ng Umaga di ko na kayang tiisin. Habang nasa hapag kami ni Nanay ay di ko na napigilang tanungin.
+“Nanay, Si Tatay Diba mananangal? Lagi po kasing kalahati Ang nakikita natin pag Siya ay tumatawag.” mungkahi ko na na may halong lungkot. Pero Si nanay ko natulala at parang Hindi nadin makasagot.
+
+Hinaplos ni Nanay Ang mabibilog Kong pisngi at sinabing.
+“SI Tatay anak ay nasa ibang Bansa, Nag ayos kasi Siya Ng mga makina Ng barko na sobrang dambuhala. Masikip kasi sa may makina Ng barko kaya pag nag video call sa telepono katawan lang Ang nakikita mo.” Di man ni Nanay sabihin ramdam ko Ang kanyang lungkot.
+“Haaay….” Bunting Hindi ga ko nalang
+At iniisip na sakto mananangal Si tatay at nahahati niya Ang kanyang katawan kaya niyang lusutan Ang mga makinang nakaharang.
+
+“Di bale anak matatapos na daw Ang kanyang kontrata.” ngayong linggo makalawa ay uuwi na Siya.
+
+Di ko mawari Ang aking nadarama. Ano kaya Ang uuwi Yung paa o Ang itaaas na bahagi niya? Sana Ang may kamay para mayakap ko nadin Ang aking Tatay.
+
+Maaga akong nagising, nag linis kami ni Nanay. Pero lingid sa isip Nanay binibilang ko Ang manok na pwedeng kainin ni Tatay.
+
+Magagabi na nang may kumatok sa Bahay. “Tao po.. tao po…”
+“Teka, boses yun ni Tatay”
+May pag aalangan Ang aking pag Tayo, Nauna na Si Nanay papunta sa may pinto.
+
+Pag sunod ko sa kanya, ako ay Nagulat pero mas lamang Ang Saya. Paano Ang dumating na Tatay ko Hindi hiwalay Ang katawan at Ang paa.
+
+Tumakbo akong payakap. Hindi na Siya larawan, Hindi na Siya sa cellphone lang nakikita at Hindi na ako mag aalangan.
+
+Natagalan Lang daw Siya sa byahe kaya Gabi na nakarating,.. Madami Siyang pasalubong at sa wakas sabay sabay kaming Kumain. Sa Oras na iyon kahit Isa pa Siyang mananangal Basta Kasama namin Siya ay sapat na. Pero iba pa din siyempre kung di aswang Ang aking Papa.
+    </div>
+
+    <!-- Quiz Section -->
+    <h2>Pagsusuri sa Pag-unawa sa Kuwento</h2>
+    <form id="quizForm" class="quiz-section">
+        
+        <!-- Q1 -->
+        <div class="question-card" id="q1-container">
+            <div class="question-title">1. Bakit inakala ng bata na isang manananggal o aswang ang kaniyang tatay?</div>
+            <ul class="options-list">
+                <li><label><input type="radio" name="q1" value="A"> A) Dahil palagi itong lumalabas kapag hatinggabi lamang.</label></li>
+                <li><label><input type="radio" name="q1" value="B"> B) Dahil kalahating bahagi lang ng katawan nito ang nakikita niya sa video call.</label></li>
+                <li><label><input type="radio" name="q1" value="C"> C) Dahil hilaw na karne at dugo ang paborito nitong pagkain.</label></li>
+                <li><label><input type="radio" name="q1" value="D"> D) Dahil may pakpak ito at lumilipad sa bubong ng kanilang bahay.</label></li>
+            </ul>
+        </div>
+
+        <!-- Q2 -->
+        <div class="question-card" id="q2-container">
+            <div class="question-title">2. Ano ang tunay na trabaho ng tatay sa ibang bansa kaya kalahati lang ng katawan nito ang madalas makita sa telepono?</div>
+            <ul class="options-list">
+                <li><label><input type="radio" name="q2" value="A"> A) Isang piloto ng eroplano</label></li>
+                <li><label><input type="radio" name="q2" value="B"> B) Isang kapitan ng barko</label></li>
+                <li><label><input type="radio" name="q2" value="C"> C) Isang tagapag-ayos ng makina ng dambuhalang barko sa masisikip na lugar</label></li>
+                <li><label><input type="radio" name="q2" value="D"> D) Isang nars sa malaking ospital</label></li>
+            </ul>
+        </div>
+
+        <!-- Q3 -->
+        <div class="question-card" id="q3-container">
+            <div class="question-title">3. Sino ang nagkwento sa bata tungkol sa mga aswang at manananggal na naging dahilan ng kaniyang pag-aalala?</div>
+            <ul class="options-list">
+                <li><label><input type="radio" name="q3" value="A"> A) Ang kaniyang Nanay</label></li>
+                <li><label><input type="radio" name="q3" value="B"> B) Ang kaniyang kapitbahay</label></li>
+                <li><label><input type="radio" name="q3" value="C"> C) Ang kaniyang kaklaseng si Chihay</label></li>
+                <li><label><input type="radio" name="q3" value="D"> D) Ang kaniyang guro sa paaralan</label></li>
+            </ul>
+        </div>
+
+        <!-- Q4 -->
+        <div class="question-card" id="q4-container">
+            <div class="question-title">4. Ano ang naisip ng bata na paboritong kainin ng kaniyang tatay kahit inakala niyang manananggal ito?</div>
+            <ul class="options-list">
+                <li><label><input type="radio" name="q4" value="A"> A) Mga manok sa bakuran</label></li>
+                <li><label><input type="radio" name="q4" value="B"> B) Isda at repolyo</label></li>
+                <li><label><input type="radio" name="q4" value="C"> C) Dugo at puso ng tao</label></li>
+                <li><label><input type="radio" name="q4" value="D"> D) Kape at tinapay</label></li>
+            </ul>
+        </div>
+
+        <!-- Q5 -->
+        <div class="question-card" id="q5-container">
+            <div class="question-title">5. Ano ang natuklasan ng bata nang sa wakas ay makauwi na ang kaniyang tatay sa kanilang bahay?</div>
+            <ul class="options-list">
+                <li><label><input type="radio" name="q5" value="A"> A) Na hiwalay pa rin ang itaas at ibabang bahagi ng katawan nito.</label></li>
+                <li><label><input type="radio" name="q5" value="B"> B) Na hindi na pala ito babalik sa ibang bansa.</label></li>
+                <li><label><input type="radio" name="q5" value="C"> C) Na buo at hindi hiwalay ang katawan at paa ng kaniyang tatay.</label></li>
+                <li><label><input type="radio" name="q5" value="D"> D) Na ibang tao ang dumating at hindi ang kaniyang tatay.</label></li>
+            </ul>
+        </div>
+
+        <button type="button" class="btn-submit" onclick="checkAnswers()">I-submit ang mga Sagot</button>
+    </form>
+
+    <div id="result"></div>
+</div>
+
+<script>
+    function checkAnswers() {
+        // Tumpak na mga sagot
+        const answers = {
+            q1: "B",
+            q2: "C",
+            q3: "C",
+            q4: "B",
+            q5: "C"
+        };
+
+        let score = 0;
+        let totalQuestions = 5;
+
+        // Suriin ang bawat tanong
+        for (let i = 1; i <= totalQuestions; i++) {
+            const qName = 'q' + i;
+            const selectedOption = document.querySelector(`input[name="${qName}"]:checked`);
+            const container = document.getElementById(`${qName}-container`);
+
+            if (selectedOption) {
+                if (selectedOption.value === answers[qName]) {
+                    score++;
+                    container.style.borderColor = "var(--correct-color)";
+                    container.style.backgroundColor = "#eafaf1";
+                } else {
+                    container.style.borderColor = "var(--wrong-color)";
+                    container.style.backgroundColor = "#fdedec";
+                }
+            } else {
+                container.style.borderColor = "var(--wrong-color)";
+                container.style.backgroundColor = "#fdedec";
+            }
+        }
+
+        // Ipakita ang resulta
+        const resultDiv = document.getElementById('result');
+        resultDiv.style.display = 'block';
+        
+        if (score === totalQuestions) {
+            resultDiv.style.backgroundColor = '#d4edda';
+            resultDiv.style.color = '#155724';
+            resultDiv.innerHTML = `Mahusay! Nakakuha ka ng perpektong puntos: ${score} / ${totalQuestions} 🎉`;
+        } else {
+            resultDiv.style.backgroundColor = '#fff3cd';
+            resultDiv.style.color = '#856404';
+            resultDiv.innerHTML = `Ang iyong puntos ay: ${score} / ${totalQuestions}. Maaari mong subukang muli!`;
+        }
+
+        // Mag-scroll pababa papunta sa resulta
+        resultDiv.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>

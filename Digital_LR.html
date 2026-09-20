@@ -128,10 +128,10 @@ h1{font-family:Poppins,sans-serif;font-size:clamp(2rem,4vw,3.25rem);line-height:
 .filter.active,.filter:hover{background:var(--primary);color:white;border-color:var(--primary)}
 
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.card{background:rgb(5, 174, 216);border:1px solid var(--border);border-radius:17px;overflow:hidden;box-shadow:0 7px 22px rgba(16,24,40,.05);display:flex;flex-direction:column;transition:.2s}
+.card{background:rgb(252, 143, 70);border:1px solid var(--border);border-radius:17px;overflow:hidden;box-shadow:0 7px 22px rgba(254, 254, 255, 0.05);display:flex;flex-direction:column;transition:.2s}
 .card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
 .card-top{padding:20px 20px 14px;display:flex;gap:13px;align-items:flex-start}
-.card-icon{width:48px;height:48px;border-radius:13px;background:#edf5ff;color:var(--primary);display:grid;place-items:center;font-weight:800;flex:none}
+.card-icon{width:48px;height:48px;border-radius:13px;background:#017fa5;color:var(--primary);display:grid;place-items:center;font-weight:800;flex:none}
 .tag{font-size:.72rem;color:var(--primary);background:#edf5ff;border-radius:999px;padding:5px 8px;font-weight:800;display:inline-block;margin-bottom:6px}
 .card h3{font-family:Poppins,sans-serif;font-size:1.03rem;margin:0 0 5px}
 .card p{margin:0;color:var(--muted);font-size:.83rem;line-height:1.5}
@@ -270,7 +270,26 @@ font-size: 1rem;
 }
 
 
+/* Desktop */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
 
+/* Tablet */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 
 </style>
@@ -306,15 +325,86 @@ font-size: 1rem;
 
 
 
-
-
-<section class="container" id="resources">
+  <section class="container" id="resources">
   <div class="grid" id="resourceGrid">
-    <article class="card" data-category="learner" data-search="grade 3 english reading learning activity sheet"> <div class="card-top"> <div class="card-icon"></div> <div> <h3>Ang Munting Halaman</h3> <p></p> </div> </div>
-      <div class="card-footer"> <small>Learning Material</small> <button class="btn" onclick="openResource('/Digital-Learning_Materials/Ang Munting Halaman.HTML', 'Ang Munting Halaman')"> Open </button> </div> </article>
 
-    
+    <!-- Card 1 -->
+    <article class="card"
+      data-category="learner"
+      data-search="grade 3 english reading learning activity sheet">
+
+      <div class="card-top">
+        <div class="card-icon"></div>
+        <div>
+          <h3>Ang Tatay Kong Aswang</h3>
+          <p></p>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <small>Story & Comprehension</small>
+        <button class="btn"
+          onclick="openResource('/Digital-Learning_Materials/Ang Tatay Kong Aswang.html', 'Ang Tatay Kong Aswang')">
+          Open
+        </button>
+      </div>
+
+    </article>
+
+
+    <!-- Card 2 -->
+    <article class="card"
+      data-category="learner"
+      data-search="grade 3 english reading learning activity sheet">
+
+      <div class="card-top">
+        <div class="card-icon"></div>
+        <div>
+          <h3>Ang Munting Halaman</h3>
+          <p></p>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <small>Story & Comprehension</small>
+        <button class="btn"
+          onclick="openResource('/Digital-Learning_Materials/Ang Munting Halaman.HTML', 'Ang Munting Halaman')">
+          Open
+        </button>
+      </div>
+
+    </article>
+
+        <article class="card"
+      data-category="learner"
+      data-search="grade 3 english reading learning activity sheet">
+
+      <div class="card-top">
+        <div class="card-icon"></div>
+        <div>
+          <h3>Ang Palaka sa Sapa</h3>
+          <p></p>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <small>Story & Comprehension</small>
+        <button class="btn"
+          onclick="openResource('/Digital-Learning_Materials/Ang Palaka sa Sapa.html', 'Ang Palaka sa Sapa')">
+          Open
+        </button>
+      </div>
+
+    </article>
+
   </div>
+</section>
+
+
+
+
+
+
   <div class="empty" id="empty">No resources matched your search. Try another keyword or category.</div>
 
   <div class="notice">

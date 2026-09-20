@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ang Palaka sa Sapa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .story-box {
+            background-color: #e6f7ff;
+            border-left: 5px solid #1890ff;
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            border-radius: 4px;
+        }
+        h1 {
+            color: #0050b3;
+            margin-top: 0;
+            font-size: 24px;
+        }
+        .story-text {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .question {
+            margin-bottom: 20px;
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #d9d9d9;
+        }
+        .question p {
+            font-weight: bold;
+            margin-top: 0;
+            font-size: 16px;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        label {
+            cursor: pointer;
+            font-size: 15px;
+            padding: 8px 12px;
+            border-radius: 5px;
+            border: 1px solid #e8e8e8;
+            transition: background-color 0.2s;
+        }
+        label:hover {
+            background-color: #fafafa;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #52c41a;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #389e0d;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="story-box">
+        <h1>Ang Palaka sa Sapa</h1>
+
+        <div class="story-text">
+            <p>May palaka sa sapa.</p>
+            <p>Ang palaka ay mataba.</p>
+            <p>Masaya ang palaka kapag nasa sapa.</p>
+        </div>
+    </div>
+
+    <form id="quizForm">
+        <h2>Mga Tanong:</h2>
+        <p>Piliin ang titik ng tamang sagot.</p>
+
+        <div class="question">
+            <p>1. Ano ang pamagat ng kuwento?</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="a"> a. Ang Palaka sa Sapa</label>
+                <label><input type="radio" name="q1" value="b"> b. Ang Baka sa Sapa</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>2. Nasaan ang palaka?</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="a"> a. sa sapa</label>
+                <label><input type="radio" name="q2" value="b"> b. sa aplaya</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>3. Ano ang pakiramdam ng palaka kapag nasa sapa?</p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="a"> a. naiinis</label>
+                <label><input type="radio" name="q3" value="b"> b. masaya</label>
+            </div>
+        </div>
+
+        <button type="button" onclick="checkAnswers()">Isumite ang Sagot</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        function checkAnswers() {
+            const answers = {
+                q1: 'a',
+                q2: 'a',
+                q3: 'b'
+            };
+            
+            let score = 0;
+            let total = 3;
+
+            const q1 = document.querySelector('input[name="q1"]:checked');
+            const q2 = document.querySelector('input[name="q2"]:checked');
+            const q3 = document.querySelector('input[name="q3"]:checked');
+
+            if (q1 && q1.value === answers.q1) score++;
+            if (q2 && q2.value === answers.q2) score++;
+            if (q3 && q3.value === answers.q3) score++;
+
+            const resultDiv = document.getElementById('result');
+            if (!q1 || !q2 || !q3) {
+                resultDiv.style.color = '#faad14';
+                resultDiv.innerHTML = 'Paki-sagutan ang lahat ng tanong!';
+            } else {
+                resultDiv.style.color = score === total ? '#52c41a' : '#f5222d';
+                resultDiv.innerHTML = `Nakuha mo ang ikaw na puntos: ${score} / ${total}`;
+            }
+        }
+    </script>
+
+</body>
+</html>
