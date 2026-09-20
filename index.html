@@ -19,6 +19,642 @@
 
 </head>
 
+<style>
+
+    .navbar {
+    background: #064a30;
+}
+.container {
+    width: 92%;
+    max-width: 1400px;
+    margin: 30px auto;
+}
+
+.main-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(220px, 270px)
+        minmax(400px, 1fr)
+        minmax(220px, 270px);
+
+    gap: 25px;
+
+    align-items: start;
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+.card {
+    background: white;
+
+    border-radius: 12px;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+
+    overflow: hidden;
+
+    margin-bottom: 25px;
+}
+
+.card-header {
+    padding: 15px 18px;
+
+    background: #005564;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-header h2 {
+    font-size: 18px;
+    font-family: "Segoe UI", sans-serif;
+}
+
+.card-body {
+    padding: 18px;
+}
+
+/* =========================================================
+   LEFT - DOWNLOADABLE FORMS
+========================================================= */
+.form-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 12px;
+
+    border: 1px solid #e4e8eb;
+    border-radius: 8px;
+
+    text-decoration: none;
+    color: #263238;
+
+    transition: .2s;
+
+    background: #fafafa;
+}
+
+.form-item:hover {
+    background: #eef8f3;
+    border-color: #002b33;
+    transform: translateX(3px);
+}
+
+.form-icon {
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: #e9f5ef;
+
+    color: #ff5e00;
+
+    font-size: 18px;
+}
+
+.form-info {
+    min-width: 0;
+}
+
+.form-title {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.form-type {
+    font-size: 11px;
+    color: #78909c;
+}
+/* =========================================================
+   CENTER - SCHOOL HEAD MESSAGE
+========================================================= */
+.head-message {
+    display: grid;
+
+    grid-template-columns: 120px 1fr;
+
+    gap: 20px;
+
+    align-items: start;
+}
+
+.head-photo {
+    width: 120px;
+    height: 120px;
+
+    border-radius: 50%;
+
+    background: #e9f5ef;
+
+    border: 4px solid #ff5e00;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 42px;
+    color: #ff5e00;
+
+    overflow: hidden;
+}
+
+.head-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.message-title {
+    color: #ff5e00;
+    margin-bottom: 8px;
+}
+
+.message-text {
+    font-size: 14px;
+    color: #455a64;
+}
+
+.head-name {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.head-position {
+    font-size: 13px;
+    color: #78909c;
+}
+
+/* =========================================================
+   NEWS
+========================================================= */
+.section-title {
+    margin-bottom: 15px;
+
+    color: #ff5e00;
+
+    font-size: 21px;
+}
+
+.news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.news-item {
+    display: grid;
+
+    grid-template-columns: 110px 1fr;
+
+    gap: 15px;
+
+    padding-bottom: 15px;
+
+    border-bottom: 1px solid #e7ebee;
+}
+
+.news-item:last-child {
+    border-bottom: none;
+}
+
+.news-image {
+    width: 110px;
+    height: 85px;
+
+    border-radius: 8px;
+
+    background: linear-gradient(135deg,#ff5e00,#521e01);
+
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 28px;
+
+    overflow: hidden;
+}
+
+.news-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.news-date {
+    color: #772c00;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.news-title {
+    font-size: 16px;
+    margin: 3px 0;
+}
+
+.news-summary {
+    font-size: 13px;
+    color: #607d8b;
+}
+
+.read-more {
+    border: none;
+    background: none;
+
+    color: #ff5e00;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    padding: 0;
+    margin-top: 5px;
+}
+
+/* =========================================================
+   RIGHT - SHORTCUTS
+========================================================= */
+.shortcut-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.shortcut {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 13px;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    background: #f7f9fa;
+
+    color: #263238;
+
+    border: 1px solid #e5e9eb;
+
+    transition: .2s;
+}
+
+.shortcut:hover {
+    background: #e9f5ef;
+    border-color: #ff5e00;
+    transform: translateX(-3px);
+}
+
+.shortcut-icon {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ff5e00;
+    color: white;
+
+    flex-shrink: 0;
+}
+
+.shortcut-title {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.shortcut-description {
+    font-size: 11px;
+    color: #78909c;
+}
+/* =========================================================
+   NEWS MODAL
+========================================================= */
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,.65);
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 1000;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    width: min(700px, 100%);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: white;
+
+    border-radius: 14px;
+
+    box-shadow: 0 20px 60px rgba(0,0,0,.3);
+
+    animation: popup .2s ease;
+}
+
+@keyframes popup {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    padding: 18px;
+
+    background: #ff5e00;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.close-modal {
+    border: none;
+
+    background: rgba(255,255,255,.15);
+
+    color: white;
+
+    width: 35px;
+    height: 35px;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    font-size: 20px;
+}
+
+.modal-body {
+    padding: 25px;
+}
+
+.modal-body img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+
+    border-radius: 10px;
+
+    margin-bottom: 15px;
+}
+/* =========================================================
+   FOOTER
+========================================================= */
+.footer {
+    background: #005763;
+
+    color: white;
+
+    padding: 30px 5%;
+
+    margin-top: 40px;
+}
+
+.footer-inner {
+    max-width: 1400px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 2fr 1fr 1fr;
+
+    gap: 30px;
+}
+
+.footer h3 {
+    margin-bottom: 10px;
+}
+
+.footer p {
+    font-size: 13px;
+    opacity: .85;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 6px;
+}
+
+.footer-links a {
+    color: white;
+    opacity: .85;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+}
+
+.copyright {
+    margin-top: 25px;
+
+    padding-top: 15px;
+
+    border-top: 1px solid rgba(255,255,255,.15);
+
+    text-align: center;
+
+    font-size: 12px;
+
+    opacity: .7;
+}
+/* =========================================================
+   TABLET
+========================================================= */
+@media (max-width: 1050px) {
+
+    .main-grid {
+        grid-template-columns: 230px 1fr 230px;
+        gap: 15px;
+    }
+
+    .head-message {
+        grid-template-columns: 90px 1fr;
+    }
+
+    .head-photo {
+        width: 90px;
+        height: 90px;
+        font-size: 30px;
+    }
+
+    .form-item,
+    .shortcut {
+        padding: 10px;
+    }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+@media (max-width: 800px) {
+
+    .header-inner {
+        align-items: center;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    .navbar.mobile-open {
+        display: block;
+    }
+
+    .nav-inner {
+        flex-direction: column;
+        align-items: stretch;
+
+        padding: 10px 5%;
+    }
+
+    .nav-link {
+        display: block;
+        text-align: center;
+    }
+
+    .main-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /*
+       On mobile:
+       Center content first
+       Forms second
+       Shortcuts third
+    */
+
+    .center-column {
+        order: 1;
+    }
+
+    .left-column {
+        order: 2;
+    }
+
+    .right-column {
+        order: 3;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================================
+   SMALL PHONE
+========================================================= */
+@media (max-width: 500px) {
+
+    .header {
+        padding: 12px 4%;
+    }
+
+    .school-logo {
+        width: 55px;
+        height: 55px;
+        font-size: 20px;
+    }
+
+    .school-name p {
+        font-size: 11px;
+    }
+
+    .container {
+        width: 94%;
+        margin-top: 20px;
+    }
+
+    .card-body {
+        padding: 14px;
+    }
+
+    .head-message {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .head-photo {
+        margin: auto;
+    }
+
+    .news-item {
+        grid-template-columns: 85px 1fr;
+    }
+
+    .news-image {
+        width: 85px;
+        height: 70px;
+    }
+
+    .news-title {
+        font-size: 14px;
+    }
+}
+
+
+</style>
+
+
+
+
 <body 
     <-- SHARED NAVIGATION -->
     <div id="site-navigation"></div>
@@ -65,7 +701,819 @@
 
 <!-- START CONTENT-->	
 	
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
 
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="container">
+    <div class="main-grid">
+        <!-- =================================================
+             LEFT COLUMN
+        ================================================== -->
+
+        <aside class="left-column" id="forms">
+            <div class="card">
+                <div class="card-header">
+                  
+                   <h2>Downloadable Forms</h2>
+                </div>
+               <div class="card-body">
+                    <div class="form-list" id="formList">
+                        <!-- FORM 1 -->
+                       <a href="" class="form-item"  data-name="Enrollment Form">
+                            <div class="form-icon">
+                                📄
+                            </div>
+                            <div class="form-info">
+                                <div class="form-title">
+                                    Enrollment Form
+                                </div>
+                                <div class="form-type">
+                                    PDF Document
+                                </div>
+                            </div>
+                        </a>
+                        <!-- FORM 2 -->
+                        <a
+                            href=""
+                            
+                            class="form-item"
+                            data-name="Student Information Form"
+                        >
+                            <div class="form-icon">
+                                📋
+                            </div>
+                            <div class="form-info">
+
+                                <div class="form-title">
+                                    Leave Form
+                                </div>
+
+                                <div class="form-type">
+                                    PDF Document
+                                </div>
+                            </div>
+                        </a>
+                        <!-- FORM 3 -->
+                        <a
+                            href=""
+                           
+                            class="form-item"
+                            data-name="Transfer Form"
+                        >
+                            <div class="form-icon">
+                                🔄
+                            </div>
+                            <div class="form-info">
+                                <div class="form-title">
+                                    Personal Data Sheet (PDS)
+                                </div>
+                                <div class="form-type">
+                                    PDF Document
+                                </div>
+
+                            </div>
+
+                        </a>
+                        <!-- FORM 4 -->
+                       <!-- FORM 5 -->
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- INFORMATION CARD -->
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <span>ℹ️</span>
+
+                    <h2>Important</h2>
+
+                </div>
+
+                <div class="card-body">
+
+                    <p style="font-size:13px;color:#607d8b;">
+
+                        Please download the appropriate form
+                        and accomplish all required information
+                        before submission.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- =================================================
+             CENTER COLUMN
+        ================================================== -->
+
+        <section class="center-column">
+
+
+            <!-- SCHOOL HEAD MESSAGE -->
+
+            <div class="card">
+
+                <div class="card-header">
+                    <h2>School Head's Message</h2>
+                </div>
+
+                <div class="card-body">
+
+                    <div class="head-message">
+
+                        <div class="head-photo">
+
+                            <!-- Replace with actual photo -->
+
+                            
+
+                        </div>
+
+
+                        <div>
+
+                            <h2 class="message-title">
+                               """"
+                            </h2>
+
+                            <p class="message-text">
+
+                                ""
+
+                            </p>
+
+                            <p class="message-text" style="margin-top:10px;">
+
+                                """"
+
+                            </p>
+
+                            <div class="head-name">
+                               -
+                            </div>
+
+                            <div class="head-position">
+                                -
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- NEWS -->
+
+            <div class="card" id="news">
+
+                <div class="card-header">
+
+                    <span>📰</span>
+
+                    <h2>School News & Updates</h2>
+
+                </div>
+
+                <div class="card-body">
+
+                    <div class="news-list">
+
+
+                        <!-- NEWS 1 -->
+
+                        <article class="news-item">
+
+                            <div class="news-image">
+                                📚
+                            </div>
+
+                            <div>
+
+                                <div class="news-date">
+                                    SEPTEMBER 20, 2026
+                                </div>
+
+                                <h3 class="news-title">
+                                    School Learning Activities
+                                </h3>
+
+                                <p class="news-summary">
+
+                                    Updates and announcements
+                                    regarding current school
+                                    learning activities and
+                                    programs.
+
+                                </p>
+
+                                <button
+                                    class="read-more"
+                                    onclick="openNews(
+                                    'School Learning Activities',
+                                    'SEPTEMBER 20, 2026',
+                                    'This section contains the latest information regarding school learning activities, learner support programs, and important announcements.'
+                                    )"
+                                >
+                                    Read More →
+                                </button>
+
+                            </div>
+
+                        </article>
+
+
+                        <!-- NEWS 2 -->
+
+                        <article class="news-item">
+
+                            <div class="news-image">
+                                👨‍👩‍👧
+                            </div>
+
+                            <div>
+
+                                <div class="news-date">
+                                    SEPTEMBER 18, 2026
+                                </div>
+
+                                <h3 class="news-title">
+                                    Parent and School Updates
+                                </h3>
+
+                                <p class="news-summary">
+
+                                    Important information for
+                                    parents and guardians.
+
+                                </p>
+
+                                <button
+                                    class="read-more"
+                                    onclick="openNews(
+                                    'Parent and School Updates',
+                                    'SEPTEMBER 18, 2026',
+                                    'Parents and guardians are encouraged to regularly check the school website for announcements, schedules, forms, and other important information.'
+                                    )"
+                                >
+                                    Read More →
+                                </button>
+
+                            </div>
+
+                        </article>
+
+
+                        <!-- NEWS 3 -->
+
+                        <article class="news-item">
+
+                            <div class="news-image">
+                                🏆
+                            </div>
+
+                            <div>
+
+                                <div class="news-date">
+                                    SEPTEMBER 16, 2026
+                                </div>
+
+                                <h3 class="news-title">
+                                    School Program Updates
+                                </h3>
+
+                                <p class="news-summary">
+
+                                    Learn more about the school's
+                                    current programs and activities.
+
+                                </p>
+
+                                <button
+                                    class="read-more"
+                                    onclick="openNews(
+                                    'School Program Updates',
+                                    'SEPTEMBER 16, 2026',
+                                    'This space may be used to publish information about school programs, projects, learner activities, accomplishments, and upcoming events.'
+                                    )"
+                                >
+                                    Read More →
+                                </button>
+
+                            </div>
+
+                        </article>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             RIGHT COLUMN
+        ================================================== -->
+
+        <aside class="right-column" id="shortcuts">
+
+
+            <!-- SHORTCUTS -->
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <span>🔗</span>
+
+                    <h2>Quick Links</h2>
+
+                </div>
+
+                <div class="card-body">
+
+                    <div class="shortcut-list">
+
+
+                        <a
+                            href="#"
+                            class="shortcut"
+                        >
+
+                            <div class="shortcut-icon">
+                                📝
+                            </div>
+
+                            <div>
+
+                                <div class="shortcut-title">
+                                    Online Forms
+                                </div>
+
+                                <div class="shortcut-description">
+                                    Access school forms
+                                </div>
+
+                            </div>
+
+                        </a>
+
+
+                        <a
+                            href="#"
+                            class="shortcut"
+                        >
+
+                            <div class="shortcut-icon">
+                                📚
+                            </div>
+
+                            <div>
+
+                                <div class="shortcut-title">
+                                    Learning Resources
+                                </div>
+
+                                <div class="shortcut-description">
+                                    Learning materials
+                                </div>
+
+                            </div>
+
+                        </a>
+
+
+                        <a
+                            href="#"
+                            class="shortcut"
+                        >
+
+                            <div class="shortcut-icon">
+                                📅
+                            </div>
+
+                            <div>
+
+                                <div class="shortcut-title">
+                                    School Calendar
+                                </div>
+
+                                <div class="shortcut-description">
+                                    Important dates
+                                </div>
+
+                            </div>
+
+                        </a>
+
+
+                        <a
+                            href="#"
+                            class="shortcut"
+                        >
+
+                            <div class="shortcut-icon">
+                                📊
+                            </div>
+
+                            <div>
+
+                                <div class="shortcut-title">
+                                    School Reports
+                                </div>
+
+                                <div class="shortcut-description">
+                                    Reports and documents
+                                </div>
+
+                            </div>
+
+                        </a>
+
+
+                        <a
+                            href="#"
+                            class="shortcut"
+                        >
+
+                            <div class="shortcut-icon">
+                                👨‍👩‍👧
+                            </div>
+
+                            <div>
+
+                                <div class="shortcut-title">
+                                    Parents' Corner
+                                </div>
+
+                                <div class="shortcut-description">
+                                    Parent information
+                                </div>
+
+                            </div>
+
+                        </a>
+
+
+                        <a
+                            href="#"
+                            class="shortcut"
+                        >
+
+                            <div class="shortcut-icon">
+                                📞
+                            </div>
+
+                            <div>
+
+                                <div class="shortcut-title">
+                                    Contact School
+                                </div>
+
+                                <div class="shortcut-description">
+                                    Contact information
+                                </div>
+
+                            </div>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SCHOOL INFO -->
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <span>📍</span>
+
+                    <h2>School Information</h2>
+
+                </div>
+
+                <div class="card-body">
+
+                    <p style="font-size:13px;">
+
+                        <strong>School:</strong><br>
+
+                        Claudio Sandoval South
+                        Elementary School
+
+                    </p>
+
+                    <br>
+
+                    <p style="font-size:13px;">
+
+                        <strong>Division:</strong><br>
+
+                        Schools Division Office of Palawan
+
+                    </p>
+
+                    <br>
+
+                    <p style="font-size:13px;">
+
+                        <strong>Email:</strong><br>
+
+                        170532csses@deped.gov.ph
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+    </div>
+
+</main>
+
+
+
+<!-- =====================================================
+     NEWS MODAL
+===================================================== -->
+
+<div class="modal" id="newsModal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2 id="modalTitle">
+                News
+            </h2>
+
+            <button
+                class="close-modal"
+                onclick="closeNews()"
+            >
+                ×
+            </button>
+
+        </div>
+
+        <div class="modal-body">
+
+            <div
+                id="modalDate"
+                class="news-date"
+                style="margin-bottom:15px;"
+            ></div>
+
+            <p
+                id="modalText"
+                style="color:#455a64;"
+            ></p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer" id="contact">
+
+    <div class="footer-inner">
+
+
+        <div>
+
+            <h3>
+                Claudio Sandoval South Elementary School
+            </h3>
+
+            <p>
+                Official school website providing
+                information, announcements, forms,
+                learning resources, and school updates
+                for learners, parents, teachers, and
+                stakeholders.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>School Links</h3>
+
+            <ul class="footer-links">
+
+                <li>
+                    <a href="#">Home</a>
+                </li>
+
+                <li>
+                    <a href="#forms">Download Forms</a>
+                </li>
+
+                <li>
+                    <a href="#news">News & Updates</a>
+                </li>
+
+                <li>
+                    <a href="#shortcuts">Quick Links</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div>
+
+            <h3>Contact</h3>
+
+            <p>
+                Claudio Sandoval South Elementary School
+            </p>
+
+            <p>
+                Schools Division Office of Palawan
+            </p>
+
+            <p>
+                school@example.com
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 Claudio Sandoval South Elementary School.
+        All Rights Reserved.
+
+    </div>
+
+</footer>
+
+
+
+<script>
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+function toggleMenu() {
+
+    const navbar = document.getElementById("navbar");
+
+    navbar.classList.toggle("mobile-open");
+
+}
+
+
+/* =========================================================
+   SEARCH FORMS
+========================================================= */
+
+function searchForms() {
+
+    const input =
+        document.getElementById("formSearch");
+
+    const search =
+        input.value.toLowerCase();
+
+    const forms =
+        document.querySelectorAll(".form-item");
+
+    forms.forEach(function(form) {
+
+        const name =
+            form.dataset.name.toLowerCase();
+
+        if (name.includes(search)) {
+
+            form.style.display = "flex";
+
+        } else {
+
+            form.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+/* =========================================================
+   OPEN NEWS MODAL
+========================================================= */
+
+function openNews(title, date, text) {
+
+    document.getElementById("modalTitle")
+        .textContent = title;
+
+    document.getElementById("modalDate")
+        .textContent = date;
+
+    document.getElementById("modalText")
+        .textContent = text;
+
+    document
+        .getElementById("newsModal")
+        .classList.add("active");
+
+}
+
+
+/* =========================================================
+   CLOSE NEWS MODAL
+========================================================= */
+
+function closeNews() {
+
+    document
+        .getElementById("newsModal")
+        .classList.remove("active");
+
+}
+
+
+/* =========================================================
+   CLOSE MODAL WHEN CLICKING OUTSIDE
+========================================================= */
+
+document
+    .getElementById("newsModal")
+    .addEventListener("click", function(event) {
+
+        if (event.target === this) {
+
+            closeNews();
+
+        }
+
+    });
+
+
+/* =========================================================
+   ESC KEY CLOSE
+========================================================= */
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+
+        closeNews();
+
+    }
+
+});
+
+</script>
 
 
 
