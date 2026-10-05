@@ -720,23 +720,20 @@
             <div class="card">
                 <div class="card-header">
                   
-                   <h2>Downloadable Forms</h2>
+                   <h2>Downloadable Forms and Templates</h2>
                 </div>
                <div class="card-body">
                     <div class="form-list" id="formList">
                         <!-- FORM 1 -->
                        <a href="" class="form-item"  data-name="Enrollment Form">
-                            <div class="form-icon">
-                                📄
-                            </div>
-                            <div class="form-info">
-                                <div class="form-title">
-                                    Enrollment Form
-                                </div>
-                                <div class="form-type">
-                                    PDF Document
-                                </div>
-                            </div>
+        <div class="report-item"> 
+            
+            <a href="https://depedph-my.sharepoint.com/:x:/g/personal/170532csses_deped_gov_ph/IQB67NwHqN3ZSpHgPqezpUXSAfJ5CTbHfGYZp_Q0UO5DjIQ?e=fMhxIB" 
+            class="submit-btn"  class="btn btn-light"
+   target="_blank"
+   onclick="return verifyCode();"><strong>TOS with ITEM Analysis(2026)</strong></a> 
+        </div>
+
                         </a>
                         <!-- FORM 2 -->
                         <a
@@ -1053,31 +1050,20 @@
                     <span>🔗</span>
 
                     <h2>Quick Links</h2>
-
                 </div>
-
                 <div class="card-body">
-
                     <div class="shortcut-list">
-
-
-                        <a
-                            href="#"
-                            class="shortcut"
-                        >
-
+                        <a href="/Submission_Facility.html" class="shortcut">
                             <div class="shortcut-icon">
                                 📝
                             </div>
-
                             <div>
-
                                 <div class="shortcut-title">
-                                    Online Forms
+                                    Submission Facility
                                 </div>
 
                                 <div class="shortcut-description">
-                                    Access school forms
+                                    Submit Reports and Forms
                                 </div>
 
                             </div>
@@ -1515,7 +1501,19 @@ document.addEventListener("keydown", function(event) {
 
 </script>
 
+<script>
+function verifyCode() {
+    const correctCode = "123456"; // Change this to your desired code
+    const enteredCode = prompt("Enter access code:");
 
+    if (enteredCode === correctCode) {
+        return true;  // Continue to the SharePoint link
+    } else {
+        alert("Incorrect access code.");
+        return false; // Stop the link from opening
+    }
+}
+</script>
 
 
 
