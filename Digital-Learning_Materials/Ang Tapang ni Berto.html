@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ang Tapang ni Berto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .story-box {
+            background-color: #f0f4f8;
+            padding: 20px;
+            border-left: 5px solid #2196F3;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+        .story-box p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+        .questions-section {
+            margin-top: 20px;
+        }
+        .question-card {
+            margin-bottom: 25px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+        .question-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .options {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .options li {
+            margin-bottom: 8px;
+        }
+        .options label {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .options input[type="radio"] {
+            margin-right: 10px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Ang Tapang ni Berto</h1>
+
+    <!-- Story Section -->
+    <div class="story-box">
+        <p>Si Berto ay isang masipag at mapagmahal na bata. Mahilig siyang maglaro sa labas at tumulong sa kanyang lolo sa maliit nilang bukid. Lagi rin niyang kasama ang kanyang alagang aso na si Max.</p>
+        
+        <p>Isang hapon, habang naglalakad sina Berto at Max malapit sa ilog, nakarinig sila ng mahinang iyak. Tumingin si Berto sa paligid at nakita niya ang isang maliit na sisiw na nahulog sa mababaw ngunit malakas ang agos ng tubig.</p>
+        
+        <p>Agad na nais ni Berto na tulungan ang sisiw. Ngunit naalala niya ang paalala ng kanyang lolo na maging maingat sa ilog. Hindi siya basta tumalon sa tubig. Dahan-dahan siyang lumapit sa isang mababaw na bahagi at gumamit ng mahabang sanga upang maabot ang sisiw.</p>
+        
+        <p>Tinulungan siya ni Max sa pamamagitan ng pagtayo sa tabi niya upang hindi siya madulas. Sa wakas, nahawakan ni Berto ang sisiw at ligtas niya itong nailabas mula sa tubig.</p>
+        
+        <p>Masayang-masaya si Berto. Dinala niya ang sisiw sa kanilag bahay at inalagaan ito hanggang sa makabalik ito sa kanyang ina.</p>
+    </div>
+
+    <!-- Questions Section -->
+    <div class="questions-section">
+        <h2>Mga Tanong</h2>
+
+        <form id="quizForm">
+            <!-- Question 1 -->
+            <div class="question-card">
+                <div class="question-title">1. Sino ang pangunahing tauhan sa kuwento?</div>
+                <ul class="options">
+                    <li><label><input type="radio" name="q1" value="A"> A. Max</label></li>
+                    <li><label><input type="radio" name="q1" value="B"> B. Berto</label></li>
+                    <li><label><input type="radio" name="q1" value="C"> C. Lolo ni Berto</label></li>
+                    <li><label><input type="radio" name="q1" value="D"> D. Ang sisiw</label></li>
+                </ul>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question-card">
+                <div class="question-title">2. Ano ang nakita ni Berto malapit sa ilog?</div>
+                <ul class="options">
+                    <li><label><input type="radio" name="q2" value="A"> A. Isang nawawalang aso</label></li>
+                    <li><label><input type="radio" name="q2" value="B"> B. Isang batang nalulunod</label></li>
+                    <li><label><input type="radio" name="q2" value="C"> C. Isang sisiw na nahulog sa tubig</label></li>
+                    <li><label><input type="radio" name="q2" value="D"> D. Isang malaking isda</label></li>
+                </ul>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question-card">
+                <div class="question-title">3. Bakit hindi agad tumalon si Berto sa ilog?</div>
+                <ul class="options">
+                    <li><label><input type="radio" name="q3" value="A"> A. Natakot siya kay Max.</label></li>
+                    <li><label><input type="radio" name="q3" value="B"> B. Naalala niya ang payo ng kanyang lolo.</label></li>
+                    <li><label><input type="radio" name="q3" value="C"> C. Ayaw niyang mabasa ang kanyang damit.</label></li>
+                    <li><label><input type="radio" name="q3" value="D"> D. Gusto niyang umuwi agad.</label></li>
+                </ul>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question-card">
+                <div class="question-title">4. Paano nailigtas ni Berto ang sisiw?</div>
+                <ul class="options">
+                    <li><label><input type="radio" name="q4" value="A"> A. Hinabol niya ito sa ilog.</label></li>
+                    <li><label><input type="radio" name="q4" value="B"> B. Tumalon siya sa malalim na tubig.</label></li>
+                    <li><label><input type="radio" name="q4" value="C"> C. Gumamit siya ng mahabang sanga upang maabot ito.</label></li>
+                    <li><label><input type="radio" name="q4" value="D"> D. Tinawag niya ang kanyang lolo.</label></li>
+                </ul>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question-card">
+                <div class="question-title">5. Ano ang pangunahing aral ng kuwento?</div>
+                <ul class="options">
+                    <li><label><input type="radio" name="q5" value="A"> A. Dapat iwasan ang pagtulong sa iba.</label></li>
+                    <li><label><input type="radio" name="q5" value="B"> B. Ang pagiging matapang ay dapat may kasamang pag-iingat.</label></li>
+                    <li><label><input type="radio" name="q5" value="C"> C. Mas mabuting maglaro kaysa tumulong.</label></li>
+                    <li><label><input type="radio" name="q5" value="D"> D. Dapat laging sundin ang gusto ng iba.</label></li>
+                </ul>
+            </div>
+
+            <button type="button" onclick="checkAnswers()">Isumite ang mga Sagot</button>
+        </form>
+
+        <div id="result"></div>
+    </div>
+</div>
+
+<script>
+    function checkAnswers() {
+        const answers = {
+            q1: 'B',
+            q2: 'C',
+            q3: 'B',
+            q4: 'C',
+            q5: 'B'
+        };
+
+        let score = 0;
+        let total = 5;
+
+        for (let i = 1; i <= total; i++) {
+            const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+            if (selectedOption && selectedOption.value === answers[`q${i}`]) {
+                score++;
+            }
+        }
+
+        const resultDiv = document.getElementById('result');
+        resultDiv.innerHTML = `Nakuha mo ang <span style="color: #4CAF50;">${score}</span> / ${total} na puntos!`;
+    }
+</script>
+
+</body>
+</html>

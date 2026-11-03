@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ang Punong Kawayan - Kwento at Pagsusulit</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Fredoka & Quicksand for playful/clean typography) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Canvas Confetti for quiz celebration -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #f3f8f2;
+        }
+        h1, h2, h3, .font-heading {
+            font-family: 'Fredoka', cursive;
+        }
+        .bamboo-pattern {
+            background-color: #f3f8f2;
+            background-image: radial-gradient(#d1e7dd 1.5px, transparent 1.5px), radial-gradient(#d1e7dd 1.5px, #f3f8f2 1.5px);
+            background-size: 60px 60px;
+            background-position: 0 0, 30px 30px;
+        }
+        .character-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .character-card:hover {
+            transform: translateY(-4px);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e2f0d9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #82c48e;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #509e5f;
+        }
+    </style>
+</head>
+<body class="bamboo-pattern min-h-screen text-slate-800 flex flex-col justify-between">
+
+    <!-- Header -->
+    <header class="bg-emerald-700 text-white shadow-lg sticky top-0 z-50 border-b-4 border-emerald-800">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center text-xl shadow-inner border-2 border-emerald-300">
+                    <i class="fa-solid font-bold fa-tree text-emerald-100"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl sm:text-2xl font-bold tracking-wide">Ang Punong Kawayan</h1>
+                    <p class="text-xs text-emerald-200">Kwentong Pabula at Pagsusulit</p>
+                </div>
+            </div>
+
+            <!-- Tab Navigation Buttons -->
+            <nav class="flex bg-emerald-900/40 p-1 rounded-xl gap-1">
+                <button id="tab-story-btn" onclick="switchTab('story')" class="px-4 py-2 rounded-lg font-bold text-sm transition-all flex items-center gap-2 bg-white text-emerald-800 shadow">
+                    <i class="fa-solid fa-book-open"></i>
+                    <span>Kwentuhan Time</span>
+                </button>
+                <button id="tab-quiz-btn" onclick="switchTab('quiz')" class="px-4 py-2 rounded-lg font-bold text-sm transition-all flex items-center gap-2 text-emerald-100 hover:bg-emerald-600/50">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>Pagsusulit</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-4xl mx-auto px-4 py-6 w-full flex-grow">
+
+        <!-- SECTION 1: STORY VIEW -->
+        <section id="story-section" class="space-y-6">
+            
+            <!-- Controls Bar (TTS & Text Size) -->
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-emerald-100 flex flex-wrap items-center justify-between gap-3">
+                <div class="flex items-center space-x-2">
+                    <button id="tts-btn" onclick="toggleAudio()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white rounded-xl font-bold text-sm flex items-center gap-2 shadow-md transition">
+                        <i id="tts-icon" class="fa-solid fa-volume-high"></i>
+                        <span id="tts-text">Pakinggan ang Kwento</span>
+                    </button>
+                    <span id="audio-status" class="text-xs font-semibold text-slate-500 hidden sm:inline">
+                        (Filipino Audio Ready)
+                    </span>
+                </div>
+
+                <div class="flex items-center space-x-2">
+                    <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Laki ng Titik:</span>
+                    <button onclick="changeFontSize(-1)" class="w-8 h-8 bg-slate-100 hover:bg-slate-200 rounded-lg font-bold text-slate-700 active:scale-95 transition">-</button>
+                    <button onclick="changeFontSize(1)" class="w-8 h-8 bg-slate-100 hover:bg-slate-200 rounded-lg font-bold text-slate-700 active:scale-95 transition">+</button>
+                </div>
+            </div>
+
+            <!-- Story Body Card -->
+            <article class="bg-white p-6 sm:p-10 rounded-3xl shadow-md border border-emerald-100 space-y-6 relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 opacity-5 pointer-events-none">
+                    <i class="fa-solid fa-tree text-[200px] text-emerald-800"></i>
+                </div>
+
+                <!-- Story Header Banner -->
+                <div class="border-b border-emerald-100 pb-4 text-center sm:text-left">
+                    <span class="px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full text-xs font-bold uppercase tracking-wide">Pabula</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-emerald-900 mt-2">Ang Punong Kawayan</h2>
+                </div>
+
+                <!-- Story Text Paragraphs -->
+                <div id="story-text-container" class="space-y-4 text-slate-700 leading-relaxed text-base sm:text-lg">
+                    <p class="story-paragraph p-2 rounded-xl transition hover:bg-emerald-50/50">
+                        Sa isang bakuran, may ilang punungkahoy na may kanya-kanyang katangian. Mabunga ang <strong class="text-amber-700">Santol</strong>, mayabong ang <strong class="text-emerald-700">Mangga</strong>, mabulaklak ang <strong class="text-rose-600">Kabalyero</strong>, tuwid at mabunga ang <strong class="text-teal-700">Niyog</strong>. Ngunit sa isang tabi ng bakuran ay naroroon ang payat na <strong class="text-lime-700">Kawayan</strong>.
+                    </p>
+
+                    <p class="story-paragraph p-2 rounded-xl transition hover:bg-emerald-50/50">
+                        Minsan, nagpaligsahan ang mga punungkahoy. 
+                    </p>
+
+                    <!-- Dialogue Blocks -->
+                    <div class="space-y-3 pl-2 sm:pl-4 border-l-4 border-emerald-300 my-4">
+                        <div class="bg-amber-50 p-3 rounded-xl border border-amber-100">
+                            <span class="font-bold text-amber-800 text-sm block mb-1">🥭 Santol:</span>
+                            <p class="italic">“Tingnan ninyo ako, hitik sa bunga kaya mahal ako ng mga bata.”</p>
+                        </div>
+
+                        <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-100">
+                            <span class="font-bold text-emerald-800 text-sm block mb-1">🌳 Mangga:</span>
+                            <p class="italic">“Daig kita, mayabong ang aking mga dahon at hitik pa sa bunga kaya maraming ibon sa aking mga sanga.”</p>
+                        </div>
+
+                        <div class="bg-rose-50 p-3 rounded-xl border border-rose-100">
+                            <span class="font-bold text-rose-800 text-sm block mb-1">🌺 Kabalyero:</span>
+                            <p class="italic">“Higit akong maganda, bulaklak ko’y marami at pulang-pula. Kahit malayo, ako ay kitang-kita na.”</p>
+                        </div>
+
+                        <div class="bg-teal-50 p-3 rounded-xl border border-teal-100">
+                            <span class="font-bold text-teal-800 text-sm block mb-1">🥥 Niyog:</span>
+                            <p class="italic">“Ako ang tingnan ninyo. Tuwid ang puno, malapad ang mga dahon at mabunga.”</p>
+                        </div>
+                    </div>
+
+                    <p class="story-paragraph p-2 rounded-xl transition hover:bg-emerald-50/50">
+                        “Tekayo, kaawa-awa naman si Kawayan. Payat na at wala pang bulaklak at bunga. Tingnan ninyo. Wala siyang kakibu-kibo. Lalo na siyang nagmumukhang kaawa-awa.”
+                    </p>
+
+                    <p class="story-paragraph p-2 rounded-xl transition hover:bg-emerald-50/50">
+                        Nagtawanan ang mga punungkahoy. Pinagtawanan nila ang Punong Kawayan. Nagalit si <strong class="text-cyan-700">Hangin</strong> sa narinig na usapan ng mga punungkahoy. Pinalakas niya nang pinalakas ang kanyang pag-ihip.
+                    </p>
+
+                    <p class="story-paragraph p-2 rounded-xl transition hover:bg-emerald-50/50">
+                        At isang oras niyang pagkagalit ay nalagas ang mga bulaklak, nahulog ang mga bunga at nangabuwal ang puno ng mayayabang na punungkahoy. Tanging ang mababang-loob na si <strong class="text-lime-700">Kawayan</strong> ang sumunud-sunod sa ihip ng malakas na hangin ang nakatayo at di nasalanta.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Character Showcase Grid -->
+            <div class="space-y-3">
+                <h3 class="text-xl font-bold text-emerald-900 flex items-center gap-2">
+                    <i class="fa-solid fa-users text-emerald-600"></i>
+                    Mga Tauhan sa Kwento
+                </h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+                    <div class="character-card bg-white p-3 rounded-2xl shadow-sm border border-emerald-100 text-center">
+                        <div class="w-12 h-12 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center mx-auto text-xl mb-2">🥭</div>
+                        <h4 class="font-bold text-sm text-slate-800">Santol</h4>
+                        <p class="text-xs text-slate-500 mt-1">Hitik sa bunga</p>
+                    </div>
+
+                    <div class="character-card bg-white p-3 rounded-2xl shadow-sm border border-emerald-100 text-center">
+                        <div class="w-12 h-12 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center mx-auto text-xl mb-2">🌳</div>
+                        <h4 class="font-bold text-sm text-slate-800">Mangga</h4>
+                        <p class="text-xs text-slate-500 mt-1">Mayabong ang dahon</p>
+                    </div>
+
+                    <div class="character-card bg-white p-3 rounded-2xl shadow-sm border border-emerald-100 text-center">
+                        <div class="w-12 h-12 bg-rose-100 text-rose-700 rounded-full flex items-center justify-center mx-auto text-xl mb-2">🌺</div>
+                        <h4 class="font-bold text-sm text-slate-800">Kabalyero</h4>
+                        <p class="text-xs text-slate-500 mt-1">Pulang bulaklak</p>
+                    </div>
+
+                    <div class="character-card bg-white p-3 rounded-2xl shadow-sm border border-emerald-100 text-center">
+                        <div class="w-12 h-12 bg-teal-100 text-teal-700 rounded-full flex items-center justify-center mx-auto text-xl mb-2">🥥</div>
+                        <h4 class="font-bold text-sm text-slate-800">Niyog</h4>
+                        <p class="text-xs text-slate-500 mt-1">Tuwid at mabunga</p>
+                    </div>
+
+                    <div class="character-card bg-white p-3 rounded-2xl shadow-sm border border-emerald-100 text-center col-span-2 sm:col-span-1">
+                        <div class="w-12 h-12 bg-lime-100 text-lime-700 rounded-full flex items-center justify-center mx-auto text-xl mb-2">🎋</div>
+                        <h4 class="font-bold text-sm text-slate-800">Kawayan</h4>
+                        <p class="text-xs text-slate-500 mt-1">Mababang-loob</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Moral of the Story Callout -->
+            <div class="bg-gradient-to-r from-emerald-600 to-teal-700 text-white p-6 rounded-3xl shadow-lg flex flex-col sm:flex-row items-center gap-4">
+                <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center text-3xl shrink-0">
+                    💡
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-emerald-100 mb-1">Aral ng Kwento</h3>
+                    <p class="text-sm sm:text-base leading-relaxed text-white/95">
+                        <span class="font-bold underline decoration-emerald-300">"Ang kababaang-loob ay nagdudulot ng katatagan."</span> Ang pagiging mayabang ay walang mabuting naidudulot. Katulad ng kawayan, ang pagyuko sa harap ng pagsubok at pagpapakumbaba ay nagbibigay ng lakas upang malampasan ang anumang bagyo sa buhay.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Go to Quiz Banner -->
+            <div class="text-center pt-2">
+                <button onclick="switchTab('quiz')" class="px-8 py-4 bg-amber-500 hover:bg-amber-600 active:scale-95 text-slate-900 font-bold rounded-2xl shadow-lg hover:shadow-xl transition flex items-center gap-3 mx-auto text-lg">
+                    <span>Subukan ang Pagsusulit</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+        </section>
+
+        <!-- SECTION 2: QUIZ VIEW -->
+        <section id="quiz-section" class="hidden space-y-6">
+            
+            <!-- Quiz Progress Banner -->
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-emerald-100 flex flex-wrap items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-800">Pagsusulit sa Pag-unawa</h2>
+                    <p class="text-xs text-slate-500">Sagutin ang mga tanong batay sa kwento.</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="text-right">
+                        <span class="text-xs text-slate-400 font-bold uppercase">Iskor</span>
+                        <div class="text-2xl font-bold text-emerald-600" id="live-score">0 / 3</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Questions Container -->
+            <div id="quiz-container" class="space-y-6">
+                <!-- Question Cards will be injected dynamically -->
+            </div>
+
+            <!-- Quiz Results Card (Initially Hidden) -->
+            <div id="quiz-result-card" class="hidden bg-white p-8 rounded-3xl shadow-xl border-2 border-emerald-200 text-center space-y-4">
+                <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-4xl shadow-inner">
+                    <i class="fa-solid fa-trophy"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-slate-800" id="result-title">Magaling!</h3>
+                <p class="text-slate-600" id="result-description">Nakuha mo ang perpektong iskor!</p>
+                <div class="text-4xl font-extrabold text-emerald-600" id="final-score-display">3 / 3</div>
+                
+                <div class="pt-4 flex flex-wrap justify-center gap-3">
+                    <button onclick="resetQuiz()" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-md active:scale-95 transition flex items-center gap-2">
+                        <i class="fa-solid fa-rotate-right"></i>
+                        <span>Ulitin ang Pagsusulit</span>
+                    </button>
+                    <button onclick="switchTab('story')" class="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl active:scale-95 transition flex items-center gap-2">
+                        <i class="fa-solid fa-book"></i>
+                        <span>Basahin Ulit ang Kwento</span>
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-emerald-900 text-emerald-200 py-4 text-center text-xs mt-12 border-t border-emerald-800">
+        <div class="max-w-4xl mx-auto px-4">
+            <p>Aralin sa Filipino • Interactive Storybook & Quiz</p>
+        </div>
+    </footer>
+
+    <script>
+        // Quiz Data
+        const quizQuestions = [
+            {
+                id: 1,
+                question: "1. Ano ang pamagat ng kwento?",
+                options: [
+                    { text: "a. Ang Punong Kawayan", isCorrect: true },
+                    { text: "b. Ang Puno ng Santol", isCorrect: false },
+                    { text: "c. Ang puno ng papaya", isCorrect: false }
+                ]
+            },
+            {
+                id: 2,
+                question: "2. Sino-sino ang mga tauhan sa kwento?",
+                options: [
+                    { text: "a. Mangga, Santol, Kabalyero, Niyog, Kawayan", isCorrect: true },
+                    { text: "b. Mangga, Papaya, Kabalyero, Niyog, Kawayan", isCorrect: false },
+                    { text: "c. Mangga, Santol, kabalyero, Kamyas, Kawayan", isCorrect: false }
+                ]
+            },
+            {
+                id: 3,
+                question: "3. Sino ang nanatiling nakatayo at di nasalanta?",
+                options: [
+                    { text: "a. Mangga", isCorrect: false },
+                    { text: "b. Niyog", isCorrect: false },
+                    { text: "c. Kawayan", isCorrect: true }
+                ]
+            }
+        ];
+
+        let userAnswers = {};
+        let currentFontSizeLevel = 0; // -1, 0, 1
+
+        // Initialize App
+        window.addEventListener('DOMContentLoaded', () => {
+            renderQuiz();
+        });
+
+        // Tab Switching logic
+        function switchTab(tabName) {
+            const storySec = document.getElementById('story-section');
+            const quizSec = document.getElementById('quiz-section');
+            const storyBtn = document.getElementById('tab-story-btn');
+            const quizBtn = document.getElementById('tab-quiz-btn');
+
+            if (tabName === 'story') {
+                storySec.classList.remove('hidden');
+                quizSec.classList.add('hidden');
+
+                storyBtn.className = "px-4 py-2 rounded-lg font-bold text-sm transition-all flex items-center gap-2 bg-white text-emerald-800 shadow";
+                quizBtn.className = "px-4 py-2 rounded-lg font-bold text-sm transition-all flex items-center gap-2 text-emerald-100 hover:bg-emerald-600/50";
+            } else {
+                storySec.classList.add('hidden');
+                quizSec.classList.remove('hidden');
+
+                quizBtn.className = "px-4 py-2 rounded-lg font-bold text-sm transition-all flex items-center gap-2 bg-white text-emerald-800 shadow";
+                storyBtn.className = "px-4 py-2 rounded-lg font-bold text-sm transition-all flex items-center gap-2 text-emerald-100 hover:bg-emerald-600/50";
+                
+                // Pause speech if playing when switching tabs
+                if (window.speechSynthesis && window.speechSynthesis.speaking) {
+                    window.speechSynthesis.cancel();
+                    updateSpeechButtonState(false);
+                }
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Font Size Adjuster
+        function changeFontSize(delta) {
+            const container = document.getElementById('story-text-container');
+            const currentSize = parseFloat(window.getComputedStyle(container).fontSize);
+            const newSize = Math.max(14, Math.min(26, currentSize + (delta * 2)));
+            container.style.fontSize = `${newSize}px`;
+        }
+
+        // Text To Speech (Audio Read-Aloud)
+        function toggleAudio() {
+            if (!('speechSynthesis' in window)) {
+                alert('Paumanhin! Ang inyong browser ay hindi sumusuporta sa Text-to-Speech audio.');
+                return;
+            }
+
+            const synth = window.speechSynthesis;
+
+            if (synth.speaking) {
+                synth.cancel();
+                updateSpeechButtonState(false);
+                return;
+            }
+
+            // Extract plain text from story
+            const fullStoryText = `
+                Ang Punong Kawayan. 
+                Sa isang bakuran, may ilang punungkahoy na may kanya-kanyang katangian. Mabunga ang Santol, mayabong ang Mangga, mabulaklak ang Kabalyero, tuwid at mabunga ang Niyog. Ngunit sa isang tabi ng bakuran ay naroroon ang payat na Kawayan. 
+                Minsan, nagpaligsahan ang mga punungkahoy. 
+                Wika ni Santol: Tingnan ninyo ako, hitik sa bunga kaya mahal ako ng mga bata. 
+                Wika ni Mangga: Daig kita, mayabong ang aking mga dahon at hitik pa sa bunga kaya maraming ibon sa aking mga sanga. 
+                Wika ni Kabalyero: Higit akong maganda, bulaklak ko'y marami at pulang-pula. Kahit malayo, ako ay kitang-kita na. 
+                Wika ni Niyog: Ako ang tingnan ninyo. Tuwid ang puno, malapad ang mga dahon at mabunga. 
+                Wika nila: Tekayo, kaawa-awa naman si Kawayan. Payat na at wala pang bulaklak at bunga. Tingnan ninyo. Wala siyang kakibu-kibo. Lalo na siyang nagmumukhang kaawa-awa. 
+                Nagtawanan ang mga punungkahoy. Pinagtawanan nila ang Punong Kawayan. Nagalit si Hangin sa narinig na usapan ng mga punungkahoy. Pinalakas niya nang pinalakas ang kanyang pag-ihip. At isang oras niyang pagkagalit ay nalagas ang mga bulaklak, nahulog ang mga bunga at nangabuwal ang puno ng mayayabang na punungkahoy. Tanging ang mababang-loob na si Kawayan ang sumunud-sunod sa ihip ng malakas na hangin ang nakatayo at di nasalanta.
+            `;
+
+            const utterance = new SpeechSynthesisUtterance(fullStoryText);
+            
+            // Try to set Tagalog/Filipino or soft default voice
+            const voices = synth.getVoices();
+            const filipinoVoice = voices.find(v => v.lang.includes('tl') || v.lang.includes('fil') || v.lang.includes('id'));
+            if (filipinoVoice) {
+                utterance.voice = filipinoVoice;
+            }
+            
+            utterance.rate = 0.9; // Slightly slower for clear storytelling
+            utterance.pitch = 1.0;
+
+            utterance.onstart = () => updateSpeechButtonState(true);
+            utterance.onend = () => updateSpeechButtonState(false);
+            utterance.onerror = () => updateSpeechButtonState(false);
+
+            synth.speak(utterance);
+        }
+
+        function updateSpeechButtonState(isPlaying) {
+            const btnText = document.getElementById('tts-text');
+            const btnIcon = document.getElementById('tts-icon');
+            const btn = document.getElementById('tts-btn');
+
+            if (isPlaying) {
+                btnText.innerText = "I-hinto ang Pagbasa";
+                btnIcon.className = "fa-solid fa-circle-stop animate-pulse";
+                btn.classList.replace('bg-emerald-600', 'bg-rose-600');
+                btn.classList.replace('hover:bg-emerald-700', 'hover:bg-rose-700');
+            } else {
+                btnText.innerText = "Pakinggan ang Kwento";
+                btnIcon.className = "fa-solid fa-volume-high";
+                btn.classList.replace('bg-rose-600', 'bg-emerald-600');
+                btn.classList.replace('hover:bg-rose-700', 'hover:bg-emerald-700');
+            }
+        }
+
+        // Quiz Rendering logic
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = '';
+
+            quizQuestions.forEach((q, qIndex) => {
+                const card = document.createElement('div');
+                card.className = "bg-white p-6 rounded-3xl shadow-sm border border-emerald-100 space-y-4";
+                card.id = `q-card-${qIndex}`;
+
+                let optionsHTML = '';
+                q.options.forEach((opt, optIndex) => {
+                    optionsHTML += `
+                        <button onclick="selectOption(${qIndex}, ${optIndex})" 
+                                id="opt-${qIndex}-${optIndex}"
+                                class="quiz-option-btn w-full text-left p-4 rounded-xl border-2 border-slate-100 hover:border-emerald-300 hover:bg-emerald-50/50 transition font-semibold text-slate-700 flex items-center justify-between gap-3">
+                            <span>${opt.text}</span>
+                            <span class="icon-placeholder text-lg"></span>
+                        </button>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <h3 class="text-lg font-bold text-slate-800">${q.question}</h3>
+                    <div class="space-y-2">
+                        ${optionsHTML}
+                    </div>
+                    <div id="feedback-${qIndex}" class="hidden p-3 rounded-xl text-sm font-bold flex items-center gap-2"></div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        // Option Selection and Grading
+        function selectOption(qIndex, optIndex) {
+            // Prevent re-selecting if already answered
+            if (userAnswers[qIndex] !== undefined) return;
+
+            userAnswers[qIndex] = optIndex;
+            const question = quizQuestions[qIndex];
+            const selectedOption = question.options[optIndex];
+            const isCorrect = selectedOption.isCorrect;
+
+            const feedbackEl = document.getElementById(`feedback-${qIndex}`);
+            feedbackEl.classList.remove('hidden');
+
+            // Highlight chosen option
+            question.options.forEach((opt, idx) => {
+                const btn = document.getElementById(`opt-${qIndex}-${idx}`);
+                btn.disabled = true;
+
+                if (idx === optIndex) {
+                    if (isCorrect) {
+                        btn.className = "quiz-option-btn w-full text-left p-4 rounded-xl border-2 border-emerald-500 bg-emerald-100/70 text-emerald-900 font-bold flex items-center justify-between gap-3 shadow-sm";
+                        btn.querySelector('.icon-placeholder').innerHTML = '<i class="fa-solid fa-circle-check text-emerald-600"></i>';
+                    } else {
+                        btn.className = "quiz-option-btn w-full text-left p-4 rounded-xl border-2 border-rose-400 bg-rose-50 text-rose-900 font-bold flex items-center justify-between gap-3 shadow-sm";
+                        btn.querySelector('.icon-placeholder').innerHTML = '<i class="fa-solid fa-circle-xmark text-rose-500"></i>';
+                    }
+                } else if (opt.isCorrect) {
+                    // Show correct answer if wrong answer was clicked
+                    btn.className = "quiz-option-btn w-full text-left p-4 rounded-xl border-2 border-emerald-400 bg-emerald-50/50 text-emerald-800 font-semibold flex items-center justify-between gap-3";
+                    btn.querySelector('.icon-placeholder').innerHTML = '<i class="fa-solid fa-check text-emerald-500 text-sm"></i>';
+                } else {
+                    btn.className = "quiz-option-btn w-full text-left p-4 rounded-xl border-2 border-slate-100 text-slate-400 opacity-60 flex items-center justify-between gap-3";
+                }
+            });
+
+            if (isCorrect) {
+                feedbackEl.className = "p-3 rounded-xl text-sm font-bold flex items-center gap-2 bg-emerald-100 text-emerald-800 border border-emerald-200";
+                feedbackEl.innerHTML = '<i class="fa-solid fa-face-smile text-lg"></i> Tama! Mahusay na pagsagot.';
+            } else {
+                feedbackEl.className = "p-3 rounded-xl text-sm font-bold flex items-center gap-2 bg-rose-100 text-rose-800 border border-rose-200";
+                feedbackEl.innerHTML = '<i class="fa-solid fa-face-frown text-lg"></i> Mali. Tingnan ang tamang sagot sa itaas.';
+            }
+
+            updateScore();
+        }
+
+        // Score Tracking and Completion Check
+        function updateScore() {
+            let score = 0;
+            const total = quizQuestions.length;
+            const answeredCount = Object.keys(userAnswers).length;
+
+            Object.keys(userAnswers).forEach(qIdx => {
+                const optIdx = userAnswers[qIdx];
+                if (quizQuestions[qIdx].options[optIdx].isCorrect) {
+                    score++;
+                }
+            });
+
+            document.getElementById('live-score').innerText = `${score} / ${total}`;
+
+            // Check if all questions are answered
+            if (answeredCount === total) {
+                setTimeout(() => {
+                    showFinalResult(score, total);
+                }, 600);
+            }
+        }
+
+        function showFinalResult(score, total) {
+            const resultCard = document.getElementById('quiz-result-card');
+            const resultTitle = document.getElementById('result-title');
+            const resultDesc = document.getElementById('result-description');
+            const finalScore = document.getElementById('final-score-display');
+
+            resultCard.classList.remove('hidden');
+            finalScore.innerText = `${score} / ${total}`;
+
+            if (score === total) {
+                resultTitle.innerText = "🎉 Perpekto! Napakahusay!";
+                resultDesc.innerText = "Naunawaan mong mabuti ang kwento ng Punong Kawayan.";
+                
+                // Trigger celebratory confetti
+                if (typeof confetti === 'function') {
+                    confetti({
+                        particleCount: 100,
+                        spread: 70,
+                        origin: { y: 0.6 }
+                    });
+                }
+            } else if (score >= 1) {
+                resultTitle.innerText = "Magaling!";
+                resultDesc.innerText = "Magandang pagsisikap! Maaari mong basahin muli ang kwento upang makuha ang perpektong iskor.";
+            } else {
+                resultTitle.innerText = "Subukan Ulit!";
+                resultDesc.innerText = "Huwag mag-alala! Basahing mabuti ang kwento at subukan ulit ang pagsusulit.";
+            }
+
+            resultCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function resetQuiz() {
+            userAnswers = {};
+            document.getElementById('quiz-result-card').classList.add('hidden');
+            document.getElementById('live-score').innerText = `0 / ${quizQuestions.length}`;
+            renderQuiz();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

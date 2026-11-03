@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ang Lihim na Regalo ni Lito</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        h2 {
+            color: #34495e;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        .question-box {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+        }
+        label {
+            display: block;
+            margin: 8px 0;
+            cursor: pointer;
+        }
+        button {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #219653;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Ang Lihim na Regalo ni Lito</h1>
+    
+    <p>Si Lito ay isang batang kilala sa kanilang barangay dahil sa kanyang kasipagan at pagmamahal sa halaman. Tuwing hapon, pagkatapos niyang mag-aral, agad siyang dumidiretso sa kanyang munting hardin sa likod-bahay. Dito niya inaalagaan ang kanyang mga tanim na gulay tulad ng talong, kamatis, at sitaw.</p>
+    
+    <p>Isang araw, napansin ni Lito na madalas malungkot ang kanyang kaklaseng si Maya. Napag-alaman niyang may karamdaman ang ama ni Maya kaya nahihirapan silang bumili ng masustansyang pagkain sa araw-araw. Dahil dito, gumawa ng paraan si Lito. Palihim niyang pinitas ang mga pinakamagagandang gulay sa kanyang hardin, inilagay ito sa isang munting basket, at iniwan sa tapat ng pintuan nina Maya na may kasamang maikling sulat na may nakasulat na: "Para sa masustansyang hapunan. Huwag mawalan ng pag-asa! - Kaibigan"</p>
+    
+    <p>Nagulat at labis na natuwa si Maya nang makita ang basket ng mga sariwang gulay. Kahit hindi niya alam kung sino ang nagbigay, naramdaman niya ang labis na init ng pagmamahal at malasakit mula sa isang misteryosong kaibigan. Mula noon, gumaan ang pakiramdam ni Maya at nagpatuloy ang pagpapadala ni Lito ng mga gulay hanggang sa gumaling na ang ama ni Maya.</p>
+
+    <h2>Mga Tanong</h2>
+    
+    <form id="quizForm">
+        <!-- Tanong 1 -->
+        <div class="question-box">
+            <p><strong>1. Sino ang pangunahing tauhan sa kuwento na mahilig mag-alaga ng mga halaman?</strong></p>
+            <label><input type="radio" name="q1" value="A"> A. Maya</label>
+            <label><input type="radio" name="q1" value="B"> B. Lito</label>
+            <label><input type="radio" name="q1" value="C"> C. Ben</label>
+            <label><input type="radio" name="q1" value="D"> D. Juan</label>
+        </div>
+
+        <!-- Tanong 2 -->
+        <div class="question-box">
+            <p><strong>2. Ano ang pangunahing dahilan kung bakit madalas malungkot si Maya?</strong></p>
+            <label><input type="radio" name="q2" value="A"> A. Nawala ang kanyang paboritong laruan.</label>
+            <label><input type="radio" name="q2" value="B"> B. Nahihirapan siya sa kanyang mga aralin.</label>
+            <label><input type="radio" name="q2" value="C"> C. May karamdaman ang kanyang ama kaya nahihirapan sila sa pagkain.</label>
+            <label><input type="radio" name="q2" value="D"> D. Lumipat na siya ng ibang paaralan.</label>
+        </div>
+
+        <!-- Tanong 3 -->
+        <div class="question-box">
+            <p><strong>3. Paano tinulungan ni Lito si Maya?</strong></p>
+            <label><input type="radio" name="q3" value="A"> A. Binigyan niya ito ng pera para sa gamot.</label>
+            <label><input type="radio" name="q3" value="B"> B. Palihim siyang nag-iwan ng basket ng mga sariwang gulay sa tapat ng kanilang pintuan.</label>
+            <label><input type="radio" name="q3" value="C"> C. Pinuntahan niya si Maya para sabay silang mag-aral.</label>
+            <label><input type="radio" name="q3" value="D"> D. Tinulungan niya itong magtinda sa palengke.</label>
+        </div>
+
+        <!-- Tanong 4 -->
+        <div class="question-box">
+            <p><strong>4. Anong magandang aral ang ipinapakita sa kuwento?</strong></p>
+            <label><input type="radio" name="q4" value="A"> A. Ang pagiging masipag ay nagdudulot ng kayamanan.</label>
+            <label><input type="radio" name="q4" value="B"> B. Ang tunay na kaibigan ay nagpapakita ng malasakit sa oras ng pangangailangan kahit sa simpleng paraan.</label>
+            <label><input type="radio" name="q4" value="C"> C. Kailangan mong sabihin sa lahat ang iyong mabuting gawa.</label>
+            <label><input type="radio" name="q4" value="D"> D. Mas mabuting itago ang mga ani sa hardin kaysa ipamigay.</label>
+        </div>
+
+        <button type="button" onclick="checkAnswers()">I-submit ang Sagot</button>
+    </form>
+
+    <div id="result"></div>
+</div>
+
+<script>
+    function checkAnswers() {
+        const answers = {
+            q1: 'B',
+            q2: 'C',
+            q3: 'B',
+            q4: 'B'
+        };
+
+        let score = 0;
+        let total = 4;
+        let allAnswered = true;
+
+        for (let key in answers) {
+            const selected = document.querySelector(`input[name="${key}"]:checked`);
+            if (!selected) {
+                allAnswered = false;
+                break;
+            }
+            if (selected.value === answers[key]) {
+                score++;
+            }
+        }
+
+        const resultDiv = document.getElementById('result');
+        if (!allAnswered) {
+            resultDiv.style.color = '#e74c3c';
+            resultDiv.innerHTML = "Pakisagutan po muna ang lahat ng tanong bago i-submit.";
+            return;
+        }
+
+        resultDiv.style.color = '#2c3e50';
+        resultDiv.innerHTML = `Nakuha mo ang markang ${score} sa ${total}!`;
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Little Seed’s Big Dream</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f9f4;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #2e7d32;
+            text-align: center;
+        }
+        .story-box, .quiz-box {
+            background: #ffffff;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .story-box p {
+            text-align: justify;
+            text-indent: 30px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question p {
+            font-weight: bold;
+        }
+        .options label {
+            display: block;
+            margin: 5px 0;
+            cursor: pointer;
+        }
+        button {
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+        }
+        button:hover {
+            background-color: #1b5e20;
+        }
+        #results {
+            font-weight: bold;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 18px;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>The Little Seed’s Big Dream</h1>
+
+    <!-- Story Section -->
+    <div class="story-box">
+        <p>In a quiet garden, a tiny seed rested under the soil. Around it, roots from tall plants stretched wide, and earthworms moved through the soft ground. The tiny seed dreamed of becoming a strong plant with bright green leaves.</p>
+        <p>One morning, rain fell gently on the garden. The water sank into the soil and reached the tiny seed. Soon, warm sunlight shone above the ground. The seed began to swell. A small root pushed downward, and a little shoot pushed upward.</p>
+        <p>Day by day, the shoot grew taller. It reached through the soil and finally saw the sunlight. A small pair of leaves opened. A butterfly landed nearby, and bees buzzed around the flowers in the garden.</p>
+        <p>The little plant kept growing with help from water, sunlight, air, and soil. Its stem became stronger, and more leaves appeared. After many days, a small yellow flower bloomed at the top.</p>
+        <p>The tiny seed had become a beautiful plant. In the garden, the new flower stood proudly among the taller plants. Its big dream had come true.</p>
+    </div>
+
+    <!-- Questions Section -->
+    <div class="quiz-box">
+        <h2>Reading Comprehension Quiz</h2>
+        <form id="quizForm">
+            
+            <!-- Question 1 -->
+            <div class="question">
+                <p>1. Where did the tiny seed rest at the beginning of the story?</p>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="A"> A. On a rock</label>
+                    <label><input type="radio" name="q1" value="B"> B. Under the soil</label>
+                    <label><input type="radio" name="q1" value="C"> C. Inside a flower</label>
+                    <label><input type="radio" name="q1" value="D"> D. Near a pond</label>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question">
+                <p>2. What fell gently on the garden one morning?</p>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="A"> A. Snow</label>
+                    <label><input type="radio" name="q2" value="B"> B. Leaves</label>
+                    <label><input type="radio" name="q2" value="C"> C. Rain</label>
+                    <label><input type="radio" name="q2" value="D"> D. Sand</label>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question">
+                <p>3. What pushed downward from the seed?</p>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="A"> A. A root</label>
+                    <label><input type="radio" name="q3" value="B"> B. A flower</label>
+                    <label><input type="radio" name="q3" value="C"> C. A leaf</label>
+                    <label><input type="radio" name="q3" value="D"> D. A butterfly</label>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question">
+                <p>4. Which animals were seen in the garden?</p>
+                <div class="options">
+                    <label><input type="radio" name="q4" value="A"> A. Cats and dogs</label>
+                    <label><input type="radio" name="q4" value="B"> B. Birds and fish</label>
+                    <label><input type="radio" name="q4" value="C"> C. Earthworms, a butterfly, and bees</label>
+                    <label><input type="radio" name="q4" value="D"> D. Frogs, ants, and rabbits</label>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question">
+                <p>5. What did the tiny seed become at the end of the story?</p>
+                <div class="options">
+                    <label><input type="radio" name="q5" value="A"> A. A tall tree</label>
+                    <label><input type="radio" name="q5" value="B"> B. A beautiful plant with a yellow flower</label>
+                    <label><input type="radio" name="q5" value="C"> C. A dry leaf</label>
+                    <label><input type="radio" name="q5" value="D"> D. A small stone</label>
+                </div>
+            </div>
+
+            <button type="button" onclick="checkAnswers()">Submit Answers</button>
+        </form>
+
+        <div id="results">You scored 5 out of 5! <br><span class="correct">Great job! All answers are correct!</span></div>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            const answers = {
+                q1: 'B',
+                q2: 'C',
+                q3: 'A',
+                q4: 'C',
+                q5: 'B'
+            };
+
+            let score = 0;
+            let total = 5;
+            let answeredCount = 0;
+
+            for (let key in answers) {
+                const selected = document.querySelector(`input[name="${key}"]:checked`);
+                if (selected) {
+                    answeredCount++;
+                    if (selected.value === answers[key]) {
+                        score++;
+                    }
+                }
+            }
+
+            const resultsDiv = document.getElementById('results');
+            if (answeredCount < total) {
+                resultsDiv.innerHTML = `<span class="incorrect">Please answer all questions before submitting! (${answeredCount}/${total} answered)</span>`;
+            } else {
+                resultsDiv.innerHTML = `You scored ${score} out of ${total}! <br>` + 
+                    (score === total ? '<span class="correct">Great job! All answers are correct!</span>' : '<span class="incorrect">Review your answers and try again!</span>');
+            }
+        }
+    </script>
+
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+</body></html>

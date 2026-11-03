@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ang Munting Ibon ni Carlo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f9f4;
+            color: #333;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #2c5e3b;
+            text-align: center;
+        }
+
+        .story-box {
+            background-color: #e8f5e9;
+            padding: 20px;
+            border-left: 5px solid #2c5e3b;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+
+        .story-box p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .quiz-section {
+            margin-top: 20px;
+        }
+
+        .question {
+            background: #fafafa;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .question p {
+            font-weight: bold;
+            margin-top: 0;
+        }
+
+        .options label {
+            display: block;
+            margin: 8px 0;
+            cursor: pointer;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            background-color: #2c5e3b;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #1e4028;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            display: none;
+            border-radius: 5px;
+        }
+
+        .correct-answer {
+            color: green;
+        }
+
+        .wrong-answer {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Ang Munting Ibon ni Carlo</h1>
+
+    <!-- Story Section -->
+    <div class="story-box">
+        <p>Isang hapon, nakakita ang batang si Carlo ng isang munting ibon na may pilay na pakpak sa ilalim ng puno ng mangga. Kaagad niya itong kinuha at inuwi sa kanilang bahay. Ginamot niya ang sugat ng ibon, pinalagyan ng malinis na telang balot, at pinakain ng mga buto ng palay araw-araw.</p>
+        
+        <p>Pagkaraan ng dalawang linggo, ganap nang gumaling ang ibon at malakas na ang pakpak nito. Kahit napamahal na kay Carlo ang munting ibon, pinalaya pa rin niya ito upang makalipad nang malaya sa kalangitan. Bago lumipad nang malayo, humapon muna ang ibon sa balikat ni Carlo at kumanta nang masaya na tila nagpapasalamat.</p>
+    </div>
+
+    <!-- Quiz Section -->
+    <div class="quiz-section">
+        <h2>Mga Tanong:</h2>
+        <form id="quizForm">
+            
+            <!-- Question 1 -->
+            <div class="question" id="q1-box">
+                <p>1. Ano ang nakita ni Carlo sa ilalim ng puno ng mangga?</p>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="A"> A) Isang tutubi</label>
+                    <label><input type="radio" name="q1" value="B"> B) Isang munting ibon na may pilay na pakpak</label>
+                    <label><input type="radio" name="q1" value="C"> C) Isang maliit na pusa</label>
+                    <label><input type="radio" name="q1" value="D"> D) Isang pugad ng langgam</label>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question" id="q2-box">
+                <p>2. Ano ang pinakain ni Carlo sa ibon habang ito ay nagpapagaling?</p>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="A"> A) Mga buto ng palay</label>
+                    <label><input type="radio" name="q2" value="B"> B) Mga piraso ng tinapay</label>
+                    <label><input type="radio" name="q2" value="C"> C) Mga uod at pataba</label>
+                    <label><input type="radio" name="q2" value="D"> D) Maliliit na isda</label>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question" id="q3-box">
+                <p>3. Ilang linggo ang lumipas bago tuluyang gumaling ang ibon?</p>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="A"> A) Isang linggo</label>
+                    <label><input type="radio" name="q3" value="B"> B) Dalawang linggo</label>
+                    <label><input type="radio" name="q3" value="C"> C) Tatlong linggo</label>
+                    <label><input type="radio" name="q3" value="D"> D) Isang buwan</label>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question" id="q4-box">
+                <p>4. Bakit pinakawalan pa rin ni Carlo ang ibon kahit napamahal na ito sa kaniya?</p>
+                <div class="options">
+                    <label><input type="radio" name="q4" value="A"> A) Dahil ayaw na niyang gumastos sa pagkain nito</label>
+                    <label><input type="radio" name="q4" value="B"> B) Dahil tinuka siya ng ibon</label>
+                    <label><input type="radio" name="q4" value="C"> C) Upang makalipad ito nang malaya sa kalangitan</label>
+                    <label><input type="radio" name="q4" value="D"> D) Dahil itinataboy ito ng kaniyang nanay</label>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question" id="q5-box">
+                <p>5. Paano ipinarating ng ibon ang kaniyang pasasalamat kay Carlo bago lumipad nang malayo?</p>
+                <div class="options">
+                    <label><input type="radio" name="q5" value="A"> A) Nag-iwan ito ng magandang balahibo</label>
+                    <label><input type="radio" name="q5" value="B"> B) Humapon ito sa balikat ni Carlo at kumanta nang masaya</label>
+                    <label><input type="radio" name="q5" value="C"> C) Lumipad ito nang paikot sa bahay ni Carlo</label>
+                    <label><input type="radio" name="q5" value="D"> D) Nagdala ito ng prutas para kay Carlo</label>
+                </div>
+            </div>
+
+            <button type="button" onclick="checkAnswers()">Isumite ang mga Sagot</button>
+        </form>
+
+        <div id="result"></div>
+    </div>
+</div>
+
+<script>
+    function checkAnswers() {
+        // Correct answers key
+        const answers = {
+            q1: 'B',
+            q2: 'A',
+            q3: 'B',
+            q4: 'C',
+            q5: 'B'
+        };
+
+        let score = 0;
+        let totalQuestions = 5;
+
+        for (let i = 1; i <= totalQuestions; i++) {
+            const qName = 'q' + i;
+            const selected = document.querySelector(`input[name="${qName}"]:checked`);
+            const box = document.getElementById(`${qName}-box`);
+
+            if (selected) {
+                if (selected.value === answers[qName]) {
+                    score++;
+                    box.style.borderColor = 'green';
+                    box.style.backgroundColor = '#e8f5e9';
+                } else {
+                    box.style.borderColor = 'red';
+                    box.style.backgroundColor = '#ffebee';
+                }
+            } else {
+                box.style.borderColor = 'orange';
+                box.style.backgroundColor = '#fff8e1';
+            }
+        }
+
+        const resultDiv = document.getElementById('result');
+        resultDiv.style.display = 'block';
+        
+        if (score === totalQuestions) {
+            resultDiv.style.backgroundColor = '#d4edda';
+            resultDiv.style.color = '#155724';
+            resultDiv.innerHTML = `Napakagaling! Nakakuha ka ng perpektong marka: ${score} / ${totalQuestions}`;
+        } else {
+            resultDiv.style.backgroundColor = '#fff3cd';
+            resultDiv.style.color = '#856404';
+            resultDiv.innerHTML = `Ang iyong marka ay: ${score} / ${totalQuestions}. Tignan ang mga kulay sa itaas para malaman ang tamang sagot (Luntian = Tama, Pula = Mali, Dilaw = Walang Sagot).`;
+        }
+    }
+</script>
+
+</body>
+</html>
